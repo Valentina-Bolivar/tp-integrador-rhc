@@ -1,0 +1,46 @@
+[server]
+enableStaticServing = true
+
+[client]
+toolbarMode = "viewer"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#2F6E9B"
+backgroundColor = "#F5F8FA"
+secondaryBackgroundColor = "#EAF1F6"
+textColor = "#1E2A33"
+linkColor = "#2F6E9B"
+borderColor = "#DCE4EA"
+showWidgetBorder = true
+font = "Newsreader, Georgia, serif"
+headingFont = "Newsreader, Georgia, serif"
+baseFontSize = 16
+baseRadius = "0.55rem"
+buttonRadius = "2rem"
+headingFontWeights = [500, 500, 500, 600, 600, 600]
+headingFontSizes = ["2.6rem", "1.75rem", "1.3rem", "1.1rem", "1rem", "0.9rem"]
+metricValueFontWeight = 500
+chartCategoricalColors = ["#2a78d6", "#e0703c", "#1f9e74", "#b27a14"]
+blueColor = "#2F6E9B"
+greenColor = "#2E8A63"
+orangeColor = "#B7862A"
+redColor = "#B8483F"
+grayColor = "#8A97A1"
+grayBackgroundColor = "#E6EEF4"
+grayTextColor = "#4E5D69"
+
+[[theme.fontFaces]]
+family = "Newsreader"
+url = "app/static/newsreader.woff2"
+style = "normal"
+weight = "200 800"
+
+[[theme.fontFaces]]
+family = "Newsreader"
+url = "app/static/newsreader-italic.woff2"
+style = "italic"
+weight = "200 800"
