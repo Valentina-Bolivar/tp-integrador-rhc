@@ -87,7 +87,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Fase 2. Modelo lineal, supuestos de Gauss-Markov y PCA
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) ·   **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 12/11/2026
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
@@ -104,4 +104,66 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 | 28 | Conservar los 9 atípicos con $\lvert r_i \rvert > 3$ | Son internaciones de 150 a 342 días de pacientes que sobrevivieron, con registros coherentes | No son errores de medición. Huber confirma los doce coeficientes clave dentro del IC del MCO. |
 | 29 | Ajustar imputación, estandarización y PCA solo sobre train, y aplicar la rotación a ciegas sobre test | Regla estricta del enunciado | La varianza explicada en test con la rotación de train coincide con la de train: la estructura generaliza. |
 | 30 | Retener 8 componentes por el criterio de Kaiser | Autovalores mayores a 1; el gráfico de sedimentación no tiene un codo nítido | Explican el 58 % de la varianza. CP1 resume la gravedad y la falla multiorgánica; CP2, el perfil respiratorio crónico frente al cuadro inflamatorio agudo. |
+
+### Fase 3. Torneo predictivo y calibración
+
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+
+| # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
+|---|---|---|---|
+| 31 | Encapsular el preprocesamiento dentro de cada modelo (*pipeline*) | En la validación cruzada, imputar o escalar con todo train filtraría información del pliegue de validación | La imputación, el escalado y las dummies se reajustan en cada pliegue. |
+| 32 | Seleccionar hiperparámetros por AUC-ROC en `StratifiedKFold` de 5 pliegues | Resultado binario con 33 % de prevalencia | El AUC no depende del umbral, y la estratificación mantiene la prevalencia en cada pliegue (33,4 % a 33,5 %). |
+| 33 | Adoptar la penalización L2 (Ridge) frente a L1 (Lasso) | Ambas alcanzan un AUC de 0,76; Lasso anula 12 de 68 coeficientes | Ridge reparte el peso entre variables colineales (APACHE y probabilidad de sobrevida) en lugar de elegir una arbitrariamente. |
+| 34 | Reportar odds ratios desde una logística sin penalizar | La penalización sesga los coeficientes hacia cero e invalida los intervalos clásicos | Los OR con IC 95 % se estiman por máxima verosimilitud; el modelo penalizado se usa para predecir. |
+| 35 | Implementar un Naive Bayes mixto (gaussiano para continuas y Bernoulli para binarias) | Dataset con 21 variables continuas y 47 binarias | Evita tratar las binarias como gaussianas. El prior de clase se cuenta una sola vez, y un test automático lo verifica. |
+| 36 | Elegir el parámetro de poda α por validación cruzada sobre el camino de costo-complejidad | El árbol sin poda sobreajusta (ver Entrada 3) | α = 0,0013 produce un árbol de 16 hojas con AUC de validación de 0,735. |
+| 37 | Buscar los hiperparámetros del Random Forest con `RandomizedSearchCV` (20 combinaciones × 5 pliegues) | El espacio de 5 hiperparámetros tiene 576 combinaciones; con 5 pliegues serían 2.880 ajustes, más de una hora de cómputo | La búsqueda aleatoria explora el espacio de manera eficiente; el error out-of-bag converge al de la validación cruzada (0,256 en ambos). |
+| 38 | Elegir la logística como modelo final pese a un AUC puntual menor que el del Random Forest | Diferencia de AUC de 0,003, IC 95 % bootstrap [−0,009; 0,015] | Empate estadístico: se prefiere el modelo con igual calibración, interpretable y liviano (13 KB frente a 9 MB). |
+| 39 | Fijar el umbral de decisión por el índice de Youden sobre predicciones fuera de pliegue de train | Con umbral 0,5 se detecta solo el 42 % de las muertes | Umbral 0,32: el recall en test sube a 0,67. Elegirlo sobre test habría sesgado la evaluación. |
+| 40 | Medir la importancia de las variables por permutación en test y no por MDI | MDI ubica una variable de ruido puro en el puesto 9 de 69 (ver Entrada 3) | La permutación mide la pérdida de capacidad predictiva fuera de muestra y relega el ruido al último puesto. |
+
+---
+
+## Entrada 3. Autopsia de experimentos fallidos
+
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+
+### Experimento 1. Árbol de decisión sin restricciones (Fase 3)
+
+- **Hipótesis inicial:** un árbol CART crecido hasta hojas puras capturaría las interacciones entre gravedad, diagnóstico y tratamiento.
+- **Resultado:** 707 hojas y 25 niveles de profundidad. Exactitud y AUC de 1,00 en train frente a 0,64 y 0,59 en test, apenas por encima del azar.
+- **Diagnóstico:** varianza máxima. Muchas hojas contienen un único paciente, y cada corte profundo ajusta ruido de la muestra de entrenamiento.
+- **Corrección:** poda por costo-complejidad con α elegido por validación cruzada. El árbol podado tiene 16 hojas y un AUC en test de 0,744.
+- **Aprendizaje:** la exactitud en train de un modelo flexible no informa sobre su capacidad de generalización. La comparación train frente a validación debe hacerse antes de reportar cualquier métrica.
+
+### Experimento 2. Indicadores de faltante para todas las variables imputadas (Fase 2)
+
+- **Hipótesis inicial:** agregar un indicador de faltante para cada variable imputada preservaría la información de la pérdida sin costo.
+- **Resultado:** el indicador de albúmina tenía un único caso en train. Ese paciente quedó con apalancamiento $h_{ii} = 1$ (el modelo lo ajustaba de forma exacta), statsmodels advirtió una matriz de diseño de rango deficiente y la distancia de Cook máxima llegó a 0,11.
+- **Diagnóstico:** una columna con 1 a 4 casos no aporta información estadística y degenera la estimación.
+- **Corrección:** los indicadores se restringieron a las cuatro variables cuya pérdida se analizó en la Fase 1. La distancia de Cook máxima bajó a 0,019 y desapareció la advertencia.
+- **Aprendizaje:** el gráfico de influencia (Figura 2.2) detectó un problema de especificación que ningún test de supuestos habría revelado.
+
+### Experimento 3. Naive Bayes como fuente de probabilidades (Fase 3)
+
+- **Hipótesis inicial:** Naive Bayes, rápido y simple, podría ofrecer probabilidades de riesgo comparables a las de la logística.
+- **Resultado:** discrimina casi igual (AUC 0,767), pero asigna probabilidades menores a 5 % o mayores a 95 % al 57,5 % de los pacientes de test, y su Brier (0,216) es el peor del torneo.
+- **Diagnóstico:** violación del supuesto de independencia condicional. El APACHE, la presión arterial y la probabilidad de sobrevida son funciones parcialmente redundantes de la gravedad, y el modelo multiplica varias veces la misma evidencia.
+- **Corrección:** Naive Bayes queda descartado como fuente de probabilidades para la aplicación. Su resultado se documenta como ilustración de las consecuencias del supuesto.
+- **Aprendizaje:** un buen AUC no garantiza probabilidades confiables. La calibración debe evaluarse por separado cuando las probabilidades se comunican a un decisor.
+
+### Experimento 4. Importancia de variables por MDI (Fase 3)
+
+- **Hipótesis inicial:** la importancia por impureza (MDI) del Random Forest identificaría las variables que más aportan a la predicción.
+- **Resultado:** una variable de ruido gaussiano, agregada como control, ocupó el puesto 9 de 69 en MDI, por encima de todas las variables binarias. La orden de no reanimar, segunda por permutación, quedó en el puesto 18.
+- **Diagnóstico:** MDI se calcula sobre los datos de entrenamiento y favorece a las variables con muchos puntos de corte posibles, que en árboles profundos encuentran por azar cortes que reducen la impureza.
+- **Corrección:** la importancia se mide por permutación en test, donde el ruido cae al último puesto con importancia nula.
+- **Aprendizaje:** incluir una variable de control con importancia conocida (nula) es una forma simple de auditar cualquier medida de importancia.
+
+### Experimento 5. Imputación de la duración de internación con la fecha de muerte (Fase 1)
+
+- **Hipótesis inicial:** para el único paciente sin fecha de alta, usar la fecha de muerte como fin de la internación sería un supuesto razonable.
+- **Resultado:** la imputación generaba una internación de 394 días, el máximo del dataset, para un paciente cuyo último contacto registrado fue a los 196 días.
+- **Corrección:** el registro se considera inconsistente y su duración queda como faltante.
+- **Aprendizaje:** una regla de imputación razonable en general puede fabricar un valor extremo en un caso particular; los extremos deben inspeccionarse uno por uno.
 

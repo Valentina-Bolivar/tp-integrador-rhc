@@ -1,0 +1,19 @@
+{
+  "modelo": "Regresión logística con penalización L2",
+  "C": 0.1,
+  "resultado": "dth30",
+  "umbral_youden": 0.3202,
+  "metricas_test": {
+    "AUC-ROC": 0.7763,
+    "PR-AUC": 0.6331,
+    "Brier": 0.1765,
+    "Precisión": 0.6559,
+    "Recall": 0.4219,
+    "F1": 0.5135,
+    "F1 macro": 0.6644,
+    "F1 ponderado": 0.7143
+  },
+  "n_train": 4588,
+  "n_test": 1147,
+  "semilla": 42
+}
