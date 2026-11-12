@@ -61,7 +61,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ## Entrada 2. Matriz de decisiones estadísticas y supuestos
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (validado el 12/11/2026)
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 ### Fase 1. Auditoría de datos e inferencia clásica
 
