@@ -87,7 +87,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Fase 2. Modelo lineal, supuestos de Gauss-Markov y PCA
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) ·   **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
