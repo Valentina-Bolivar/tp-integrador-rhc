@@ -81,3 +81,13 @@ def test_app_corre_sin_errores():
     at.button_group(key="f_dag").set_value("Ajustar por la internación").run()
     at.slider(key="c_aps").set_value(120).run()
     assert not at.exception
+
+
+def test_verificaciones_causales_coinciden_con_el_notebook(art):
+    """El ajuste por Z recalculado en la app reproduce el ATE por regresión guardado en models/."""
+    chk = art.checks
+    ate_lr = art.causal["ate"]["DoWhy: regresión con ajuste backdoor"]["valor"]
+    assert abs(chk["ajuste_z"] - ate_lr) < 1e-4
+    assert chk["ajuste_z_colisionador"] > chk["ajuste_z"]
+    assert 0 < chk["recorte_proporcion"] < 0.10
+    assert chk["sim_mediador"] < chk["sim_total"]

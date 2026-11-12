@@ -95,6 +95,12 @@ IPW = ATE["DoWhy: IPW (Hájek)"]
 DML = causal["ate_dml"]
 BASE_MORT = float(data[cfg.OUTCOME_BIN].mean())
 YOUDEN = float(art.model_meta["umbral_youden"])
+CHK = art.checks
+_ages = sorted({int(g["edad"]) for g in causal["cate_grilla"]})
+GRID_AGES = ", ".join(str(a) for a in _ages[:-1]) + f" y {_ages[-1]}"
+N_PAC = num(len(data), 0)
+N_RHC = num(int(data[cfg.TREATMENT].sum()), 0)
+N_SENT = num(int(art.audit["casos"].sum()), 0)
 
 
 # --- Estado del paciente de la pestaña Predicción -----------------------------------
@@ -960,7 +966,7 @@ with tab_pred:
             1,
             format="%d %%",
             key="thr",
-            help="El umbral de Youden (32 %) maximiza la suma de sensibilidad y "
+            help=f"El umbral de Youden ({pct(YOUDEN, 0)}) maximiza la suma de sensibilidad y "
             "especificidad en validación cruzada. Bajarlo detecta más muertes a "
             "costa de más falsas alarmas.",
         )
@@ -1291,8 +1297,8 @@ with tab_causal:
             "Los dos grupos comparten casi todo el rango de probabilidades, condición "
             "necesaria para comparar tratados y no tratados con perfiles similares "
             "(positividad). En los extremos la superposición es escasa: por eso el "
-            "notebook repite el análisis sin el 6,3 % de pacientes con puntajes extremos, "
-            "y el efecto se mantiene en 5,5 pp."
+            f"notebook repite el análisis sin el {pct(CHK['recorte_proporcion'])} de pacientes "
+            f"con puntajes extremos, y el efecto se mantiene en {pp(CHK['recorte_ate'])}."
         )
 
     # --- DAG interactivo ----------------------------------------------------------------
@@ -1317,7 +1323,7 @@ with tab_causal:
     )
     if sv.DAG_VIEWS[dview]["conditioned"]:
         legend += " El nodo con fondo celeste es la variable por la que se ajusta."
-    ui.callout(f"<strong>{dview}.</strong> {sv.DAG_VIEWS[dview]['text']} {legend.strip()}")
+    ui.callout(f"<strong>{dview}.</strong> {sv.dag_text(dview, CHK)} {legend.strip()}")
 
     # --- Heterogeneidad -----------------------------------------------------------------
     st.divider()
@@ -1382,7 +1388,7 @@ with tab_causal:
         )
         ui.caption(
             "Banda: intervalo de confianza del 95 %. Línea punteada: efecto promedio de "
-            "Double ML. La curva se obtiene de una grilla de edades (40, 55, 70 y 85 años) "
+            f"Double ML. La curva se obtiene de una grilla de edades ({GRID_AGES} años) "
             "interpolada linealmente. La pendiente respecto del APACHE no es "
             "estadísticamente significativa: es un indicio, no un hallazgo."
         )
@@ -1526,7 +1532,7 @@ with tab_about:
     w1, w2 = st.columns([1.5, 1], gap="large")
     with w1:
         st.markdown(
-            """
+            f"""
 #### Pregunta
 
 El cateterismo cardíaco derecho mide de forma directa la función cardíaca de pacientes críticos.
@@ -1536,10 +1542,10 @@ cateterizar (pregunta causal).
 
 #### Datos
 
-Estudio SUPPORT, analizado por Connors et al. (1996): 5.735 pacientes adultos internados en
+Estudio SUPPORT, analizado por Connors et al. (1996): {N_PAC} pacientes adultos internados en
 terapia intensiva en cinco hospitales universitarios de Estados Unidos entre 1989 y 1994, de los
-cuales 2.184 recibieron RHC en las primeras 24 horas. La auditoría forense detectó 896 valores
-centinela, faltantes no aleatorios y una fuerte confusión por indicación.
+cuales {N_RHC} recibieron RHC en las primeras 24 horas. La auditoría forense detectó
+{N_SENT} valores centinela, faltantes no aleatorios y una fuerte confusión por indicación.
 
 #### Método
 
