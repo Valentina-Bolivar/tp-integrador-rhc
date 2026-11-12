@@ -1,0 +1,99 @@
+{
+  "nodos": {
+    "Z1": "Demografía y nivel socioeconómico",
+    "Z2": "Diagnóstico de ingreso y comorbilidades",
+    "Z3": "Gravedad fisiológica del día 1",
+    "Z4": "Pronóstico y preferencias (sobrevida estimada, DASI, no reanimar)",
+    "T": "Cateterismo cardíaco derecho (RHC)",
+    "M": "Intensificación terapéutica (no observada)",
+    "Y": "Muerte a 30 días",
+    "C": "Días de internación (colisionador)",
+    "U": "Criterio médico y hospital (no observados)"
+  },
+  "arcos": [
+    [
+      "Z1",
+      "Z2"
+    ],
+    [
+      "Z1",
+      "Z4"
+    ],
+    [
+      "Z2",
+      "Z3"
+    ],
+    [
+      "Z2",
+      "Z4"
+    ],
+    [
+      "Z3",
+      "Z4"
+    ],
+    [
+      "Z1",
+      "T"
+    ],
+    [
+      "Z2",
+      "T"
+    ],
+    [
+      "Z3",
+      "T"
+    ],
+    [
+      "Z4",
+      "T"
+    ],
+    [
+      "Z1",
+      "Y"
+    ],
+    [
+      "Z2",
+      "Y"
+    ],
+    [
+      "Z3",
+      "Y"
+    ],
+    [
+      "Z4",
+      "Y"
+    ],
+    [
+      "T",
+      "M"
+    ],
+    [
+      "M",
+      "Y"
+    ],
+    [
+      "T",
+      "Y"
+    ],
+    [
+      "T",
+      "C"
+    ],
+    [
+      "Y",
+      "C"
+    ],
+    [
+      "U",
+      "T"
+    ],
+    [
+      "U",
+      "Y"
+    ]
+  ],
+  "latentes": [
+    "M",
+    "U"
+  ]
+}

@@ -1,0 +1,32 @@
+digraph RHC {
+  rankdir=LR;
+  Z1 [label="Demografía y nivel socioeconómico"];
+  Z2 [label="Diagnóstico de ingreso y comorbilidades"];
+  Z3 [label="Gravedad fisiológica del día 1"];
+  Z4 [label="Pronóstico y preferencias (sobrevida estimada, DASI, no reanimar)"];
+  T [label="Cateterismo cardíaco derecho (RHC)"];
+  M [label="Intensificación terapéutica (no observada)", style="dashed"];
+  Y [label="Muerte a 30 días"];
+  C [label="Días de internación (colisionador)"];
+  U [label="Criterio médico y hospital (no observados)", style="dashed"];
+  Z1 -> Z2;
+  Z1 -> Z4;
+  Z2 -> Z3;
+  Z2 -> Z4;
+  Z3 -> Z4;
+  Z1 -> T;
+  Z2 -> T;
+  Z3 -> T;
+  Z4 -> T;
+  Z1 -> Y;
+  Z2 -> Y;
+  Z3 -> Y;
+  Z4 -> Y;
+  T -> M [style="dashed"];
+  M -> Y [style="dashed"];
+  T -> Y;
+  T -> C;
+  Y -> C;
+  U -> T [style="dashed"];
+  U -> Y [style="dashed"];
+}

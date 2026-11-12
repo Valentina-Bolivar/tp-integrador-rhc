@@ -107,7 +107,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Fase 3. Torneo predictivo y calibración
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
@@ -118,15 +118,33 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 | 35 | Implementar un Naive Bayes mixto (gaussiano para continuas y Bernoulli para binarias) | Dataset con 21 variables continuas y 47 binarias | Evita tratar las binarias como gaussianas. El prior de clase se cuenta una sola vez, y un test automático lo verifica. |
 | 36 | Elegir el parámetro de poda α por validación cruzada sobre el camino de costo-complejidad | El árbol sin poda sobreajusta (ver Entrada 3) | α = 0,0013 produce un árbol de 16 hojas con AUC de validación de 0,735. |
 | 37 | Buscar los hiperparámetros del Random Forest con `RandomizedSearchCV` (20 combinaciones × 5 pliegues) | El espacio de 5 hiperparámetros tiene 576 combinaciones; con 5 pliegues serían 2.880 ajustes, más de una hora de cómputo | La búsqueda aleatoria explora el espacio de manera eficiente; el error out-of-bag converge al de la validación cruzada (0,256 en ambos). |
-| 38 | Elegir la logística como modelo final pese a un AUC puntual menor que el del Random Forest | Diferencia de AUC de 0,003, IC 95 % bootstrap [−0,009; 0,015] | Empate estadístico: se prefiere el modelo con igual calibración, interpretable y liviano (13 KB frente a 9 MB). |
-| 39 | Fijar el umbral de decisión por el índice de Youden sobre predicciones fuera de pliegue de train | Con umbral 0,5 se detecta solo el 42 % de las muertes | Umbral 0,32: el recall en test sube a 0,67. Elegirlo sobre test habría sesgado la evaluación. |
+| 38 | Elegir la logística como modelo final pese a un AUC de validación cruzada levemente menor que el del Random Forest | AUC de validación cruzada de 0,760 frente a 0,773: ventaja de 0,013 | Ante una diferencia tan pequeña se prefiere el modelo interpretable, estable y liviano (13 KB frente a 9 MB). La decisión se toma con train; el bootstrap en test confirma después que la diferencia no es significativa (IC 95 % [−0,009; 0,015]). |
+| 39 | Fijar el umbral de decisión por el índice de Youden sobre predicciones fuera de pliegue de train | Con una prevalencia del 33 %, el umbral de 0,5 es conservador y deja sin detectar a muchos pacientes que mueren | Umbral 0,32, elegido sin usar test; medido después en test, el recall sube de 0,42 a 0,67. |
 | 40 | Medir la importancia de las variables por permutación en test y no por MDI | MDI ubica una variable de ruido puro en el puesto 9 de 69 (ver Entrada 3) | La permutación mide la pérdida de capacidad predictiva fuera de muestra y relega el ruido al último puesto. |
+
+
+### Fase 4. Inferencia causal
+
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
+
+| # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
+|---|---|---|---|
+| 41 | Usar la muestra completa (5.734 pacientes) para el análisis causal | La partición train/test protege la evaluación predictiva; en la estimación causal no hay predicción fuera de muestra que evaluar | Se maximiza la precisión del ATE. Solo se excluye el paciente sin duración de internación, necesario para ilustrar el sesgo de colisionador. |
+| 42 | Expresar todos los efectos como diferencias de riesgo | Resultado binario | Un ATE de 0,05 equivale a 50 muertes adicionales cada 1.000 pacientes: es la escala que entiende la dirección médica. |
+| 43 | Identificar con `method_name="maximal-adjustment"` en DoWhy | La búsqueda por defecto de conjuntos backdoor tardaba 70 segundos con 67 confusores | El ajuste máximo coincide con Z, excluye el colisionador y el mediador, y se resuelve en menos de un segundo. |
+| 44 | Usar la versión normalizada del IPW (estimador de Hájek) | Las propensiones extremas generan pesos inestables en el estimador de Horvitz-Thompson | Recortar las propensiones fuera de [0,05; 0,95] (6 % de los pacientes) cambia el ATE en menos de medio punto porcentual. |
+| 45 | Calcular el intervalo del IPW por bootstrap de 300 réplicas, reestimando la propensión en cada una | DoWhy no reporta un intervalo analítico para la ponderación | El intervalo incorpora la incertidumbre de la estimación de la propensión. |
+| 46 | Verificar el balance con diferencias de medias estandarizadas | La validez del IPW depende de que la ponderación balancee Z | Antes de ponderar, 34 covariables superan 0,1 (máximo 0,50); después, ninguna (máximo 0,07). |
+| 47 | Complementar las tres refutaciones de DoWhy con un E-value | Las refutaciones no detectan confusores no observados | E-value de 1,67 (1,38 para el límite inferior): se reporta la magnitud de confusión latente necesaria para anular el efecto. |
+| 48 | Usar `LinearDML` con Random Forest como modelos de ruido y verificar con `CausalForestDML` | LinearDML produce intervalos válidos para el CATE; el bosque causal no impone linealidad | Ambos métodos coinciden en el ATE y en los patrones por gravedad y diagnóstico. |
+| 49 | Reportar la heterogeneidad por gravedad como indicio y no como hallazgo | El intervalo del coeficiente del APACHE en el CATE incluye el cero | El único efecto de subgrupo con intervalo que excluye el cero es la sepsis (+9 puntos porcentuales). |
+| 50 | Demostrar las preguntas trampa con una simulación de efecto conocido | El mediador del DAG no se observa en el dataset | La simulación replica la estructura del DAG: el ajuste por Z recupera el efecto verdadero, el ajuste por M deja solo el efecto directo y el ajuste por C sesga la estimación. |
 
 ---
 
 ## Entrada 3. Autopsia de experimentos fallidos
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 ### Experimento 1. Árbol de decisión sin restricciones (Fase 3)
 
@@ -167,3 +185,48 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 - **Corrección:** el registro se considera inconsistente y su duración queda como faltante.
 - **Aprendizaje:** una regla de imputación razonable en general puede fabricar un valor extremo en un caso particular; los extremos deben inspeccionarse uno por uno.
 
+---
+
+## Entrada 4. Formalización del debate causal
+
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
+
+### Pregunta causal
+
+¿Cuál es el efecto de aplicar cateterismo cardíaco derecho en las primeras 24 horas sobre la probabilidad de muerte a 30 días de un paciente crítico? En notación de Pearl: $P(Y \mid do(T = 1)) - P(Y \mid do(T = 0))$.
+
+### Justificación de cada arco del DAG
+
+| Arco | Justificación | Evidencia en los datos |
+|---|---|---|
+| $Z_1 \rightarrow T$ | La cobertura médica y el ingreso pueden condicionar el acceso a un procedimiento invasivo y costoso. | Desbalance de cobertura e ingreso entre tratados y controles antes de ponderar. |
+| $Z_1 \rightarrow Y$ | La edad y el nivel socioeconómico se asocian con la sobrevida en terapia intensiva. | Edad entre las variables importantes por permutación (Fase 3). |
+| $Z_2 \rightarrow T$ | El diagnóstico define la indicación clínica del catéter. | RHC en el 57 % de los pacientes con sepsis frente al 13 % en coma (Fase 1). |
+| $Z_2 \rightarrow Y$ | El diagnóstico y las comorbilidades determinan el pronóstico. | Mortalidad a 30 días entre 13 % y más de 50 % según el diagnóstico (Fase 1). |
+| $Z_3 \rightarrow T$ | Los pacientes inestables (hipotensos, con mala oxigenación) son los candidatos habituales a monitoreo invasivo. | APACHE 9,8 puntos mayor en los tratados (Fase 1, $d = 0{,}51$). |
+| $Z_3 \rightarrow Y$ | La gravedad fisiológica es el principal determinante de la mortalidad. | El APACHE y la probabilidad de sobrevida encabezan todos los rankings de importancia (Fase 3). |
+| $Z_4 \rightarrow T$, $Z_4 \rightarrow Y$ | Una orden de no reanimar desalienta procedimientos invasivos y refleja un pronóstico grave. | OR de 2,8 para la mortalidad (Fase 3); desbalance de 0,23 antes de ponderar. |
+| $Z_1 \rightarrow Z_2 \rightarrow Z_3 \rightarrow Z_4$ | Las características del paciente preceden al diagnóstico, que precede a la fisiología del día 1 y al pronóstico que se resume a partir de ella. | Colinealidad estructural entre el APACHE, la fisiología y la probabilidad de sobrevida (Fase 2). Estos arcos no alteran el criterio backdoor. |
+| $T \rightarrow Y$ | Efecto directo del procedimiento: complicaciones del catéter (arritmias, infecciones, trombosis, lesión vascular). | No separable empíricamente del efecto indirecto en este dataset. |
+| $T \rightarrow M \rightarrow Y$ | La lectura del catéter induce cambios de tratamiento (fluidos, inotrópicos, vasopresores) que pueden ser beneficiosos o dañinos. | $M$ no se registra; su papel se demuestra por simulación (Fase 4, sección 4.2). |
+| $T \rightarrow C$ | El RHC prolonga la estadía. | +14 % de días de internación con covariables iguales (Fase 2). |
+| $Y \rightarrow C$ | La muerte termina la internación. | Correlación de −0,42 entre log(estadía) y muerte a 30 días (Fase 1). |
+
+### Plausibilidad de variables latentes no observadas
+
+- **Criterio del médico tratante ($U$).** Es la amenaza más plausible. El médico decide con información que no queda registrada (aspecto general del paciente, evolución en las horas previas, respuesta a tratamientos iniciales) y que también predice la mortalidad. Si los médicos cateterizan a los pacientes que "ven peor" más allá de lo que miden el APACHE y la fisiología, el efecto dañino estaría sobrestimado. El E-value indica que haría falta un confusor de este tipo con un riesgo relativo de alrededor de 1,7 con el tratamiento y con la muerte para anular el efecto. Es una magnitud plausible pero no trivial, dado que la gravedad medible ya está ajustada.
+- **Hospital.** El estudio SUPPORT se realizó en cinco hospitales universitarios con prácticas distintas de uso del catéter. El dataset no identifica el centro. Si un hospital usara más el RHC y además tuviera mayor mortalidad por razones ajenas al procedimiento, sería un confusor no observado.
+- **Preferencias del paciente y de la familia.** Están parcialmente capturadas por la orden de no reanimar, pero solo en su forma más extrema.
+
+### Amenazas a la validez interna
+
+1. **Confusión no observada.** Discutida arriba; cuantificada con el E-value.
+2. **Momento de la orden de no reanimar.** Se registra el día 1, posiblemente en simultáneo con la decisión de cateterizar. Si el RHC influyera sobre ella, sería un mediador. El análisis de sensibilidad de la sección 4.5 muestra que excluirla del ajuste reduce el ATE de 5,4 a 4,4 puntos porcentuales, que sigue siendo positivo y significativo.
+3. **Positividad.** El 6 % de los pacientes tiene propensiones extremas. Recortarlos no modifica el resultado.
+4. **Definición temporal del tratamiento.** El tratamiento se define como RHC en las primeras 24 horas. Los pacientes que mueren muy temprano tuvieron menos oportunidad de ser cateterizados y quedan en el grupo control, lo que eleva la mortalidad de los controles. Este sesgo favorecería al RHC: el daño estimado sería, en todo caso, conservador.
+5. **Calidad del dato.** Los 896 valores centinela de la Fase 1 se recodificaron como faltantes con un indicador, que preserva la información en caso de que el cero fuera una medición real (paro cardiorrespiratorio).
+6. **Validez externa.** Los datos provienen de cinco hospitales universitarios de Estados Unidos entre 1989 y 1994. La práctica del monitoreo hemodinámico cambió desde entonces, y las conclusiones no se trasladan sin más a una terapia intensiva actual. Los ensayos aleatorizados posteriores (Harvey et al., 2005; ESCAPE Investigators, 2005) tampoco encontraron beneficio en mortalidad, lo que refuerza la conclusión principal.
+
+### Conclusión del debate
+
+Bajo los supuestos explicitados, los datos no muestran beneficio del RHC y sí un aumento de la mortalidad a 30 días de entre 4 y 6 puntos porcentuales, robusto a tres estimadores, tres refutaciones y dos especificaciones alternativas del conjunto de ajuste. La principal fragilidad es la posible confusión por el criterio clínico no registrado, cuya magnitud necesaria para anular el efecto es moderada.
