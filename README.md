@@ -13,7 +13,7 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 | ¿Qué paciente tiene mayor riesgo de morir? | P(Y \| X) | Fase 3: torneo predictivo |
 | ¿Qué pasaría si se le aplica RHC? | P(Y \| do(T = 1)) | Fase 4: inferencia causal |
 
-**App en producción:** pendiente (se completa en el Paso 5).
+**App en producción:** pendiente de despliegue en Streamlit Community Cloud.
 **Notebook:** [`notebooks/TP_Integrador_Final.ipynb`](notebooks/TP_Integrador_Final.ipynb) · [Abrir en Colab](https://colab.research.google.com/github/Valentina-Bolivar/tp-integrador-rhc/blob/main/notebooks/TP_Integrador_Final.ipynb)
 **Bitácora:** [`BITACORA.md`](BITACORA.md)
 
@@ -37,12 +37,13 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 | 2 | MCO, diagnóstico de Gauss-Markov, Cook, VIF, PCA sin fuga | Completa |
 | 3 | Torneo de ML y calibración | Completa |
 | 4 | DAG, DoWhy, EconML, refutaciones, ensayo crítico | Completa |
-| 5 | Web app desplegada | Pendiente |
+| 5 | Web app (diagnóstico, predicción y simulación causal) | Construida, pendiente de despliegue |
 
 ## Estructura del repositorio
 
 ```
-├── app/                  Web app en Streamlit
+├── .streamlit/           Tema visual de la web app
+├── app/                  Web app en Streamlit (app.py, ui.py y tipografía en static/)
 ├── data/                 Dataset original y diccionario de variables
 ├── models/               Modelos serializados (joblib / json)
 ├── notebooks/            Notebook maestro reproducible
@@ -54,6 +55,17 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 ├── requirements.txt      Dependencias fijadas
 └── requirements-dev.txt  Herramientas de calidad
 ```
+
+## Web app
+
+La aplicación lee los artefactos que el notebook guarda en `models/` y no reestima los modelos. Tiene cuatro secciones:
+
+| Sección | Contenido |
+|---|---|
+| Diagnóstico y exploración | Filtros por diagnóstico, gravedad, edad y tratamiento; indicadores; inspector de variables con diferencia de medias estandarizada; proyección de los pacientes en el plano CP1-CP2 con el PCA ajustado en entrenamiento; auditoría de centinelas; descarga de la muestra filtrada |
+| Predicción del riesgo (*What-Is*) | Perfil editable o paciente real del conjunto de test; probabilidad de muerte a 30 días con intervalo bootstrap del 95 %; umbral de clasificación ajustable con sensibilidad y especificidad; aporte de cada variable al riesgo del paciente; diagrama de calibración |
+| Simulación causal (*What-If*) | Balance de confusores antes y después de ponderar; superposición de propensiones; DAG interactivo con cinco vistas (caminos causales, puerta trasera, colisionador, mediador); curva de CATE según el perfil; efecto por diagnóstico; impacto de una política; semáforo de las tres refutaciones y E-value |
+| Sobre el trabajo | Pregunta, datos, método, límites, equipo y referencias |
 
 ## Reproducción
 
