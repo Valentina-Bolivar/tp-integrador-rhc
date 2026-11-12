@@ -1,0 +1,5935 @@
+{
+ "tratamiento": "rhc",
+ "resultado": "dth30",
+ "n": 5734,
+ "ate": {
+  "Ingenuo: Y ~ T": {
+   "valor": 0.07382,
+   "ic_inf": 0.04842,
+   "ic_sup": 0.09922
+  },
+  "DoWhy: regresión con ajuste backdoor": {
+   "valor": 0.05425,
+   "ic_inf": 0.0284,
+   "ic_sup": 0.08011
+  },
+  "DoWhy: IPW (Hájek)": {
+   "valor": 0.05881,
+   "ic_inf": 0.02616,
+   "ic_sup": 0.08782
+  }
+ },
+ "ate_dml": {
+  "valor": 0.03914,
+  "ic_inf": 0.0127,
+  "ic_sup": 0.06559
+ },
+ "refutaciones": {
+  "Causa común aleatoria": {
+   "ate_refutado": 0.05429,
+   "p_valor": 0.92,
+   "criterio": "ATE estable (p > 0,05)",
+   "supera": true
+  },
+  "Tratamiento placebo": {
+   "ate_refutado": -0.00067,
+   "p_valor": 0.9,
+   "criterio": "ATE ≈ 0 (p > 0,05)",
+   "supera": true
+  },
+  "Subconjunto de datos (80 %)": {
+   "ate_refutado": 0.05464,
+   "p_valor": 0.96,
+   "criterio": "ATE dentro del IC original",
+   "supera": true
+  }
+ },
+ "e_value": {
+  "puntual": 1.667,
+  "limite_inferior": 1.385
+ },
+ "subgrupos": [
+  {
+   "diagnóstico": "Insuf. respiratoria aguda",
+   "n": 2490,
+   "CATE (LinearDML)": 0.03799,
+   "IC_inf": -6e-05,
+   "IC_sup": 0.07604,
+   "CATE (bosque causal)": 0.04696
+  },
+  {
+   "diagnóstico": "Falla multiorgánica + sepsis",
+   "n": 1226,
+   "CATE (LinearDML)": 0.0902,
+   "IC_inf": 0.03569,
+   "IC_sup": 0.1447,
+   "CATE (bosque causal)": 0.0643
+  },
+  {
+   "diagnóstico": "Falla multiorgánica + cáncer",
+   "n": 399,
+   "CATE (LinearDML)": 0.0614,
+   "IC_inf": -0.04327,
+   "IC_sup": 0.16607,
+   "CATE (bosque causal)": 0.01137
+  },
+  {
+   "diagnóstico": "Insuf. cardíaca",
+   "n": 456,
+   "CATE (LinearDML)": 0.01549,
+   "IC_inf": -0.05229,
+   "IC_sup": 0.08327,
+   "CATE (bosque causal)": 0.02724
+  },
+  {
+   "diagnóstico": "EPOC",
+   "n": 457,
+   "CATE (LinearDML)": 0.0491,
+   "IC_inf": -0.06913,
+   "IC_sup": 0.16734,
+   "CATE (bosque causal)": 0.04818
+  },
+  {
+   "diagnóstico": "Coma",
+   "n": 436,
+   "CATE (LinearDML)": -0.04653,
+   "IC_inf": -0.15822,
+   "IC_sup": 0.06515,
+   "CATE (bosque causal)": 0.00629
+  },
+  {
+   "diagnóstico": "Otros",
+   "n": 270,
+   "CATE (LinearDML)": -0.05345,
+   "IC_inf": -0.20398,
+   "IC_sup": 0.09709,
+   "CATE (bosque causal)": 0.02899
+  }
+ ],
+ "cate_grilla": [
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 15,
+   "cate": -0.02197,
+   "ic_inf": -0.09323,
+   "ic_sup": 0.04929
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 20,
+   "cate": -0.0176,
+   "ic_inf": -0.08382,
+   "ic_sup": 0.04862
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 25,
+   "cate": -0.01323,
+   "ic_inf": -0.07479,
+   "ic_sup": 0.04834
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 30,
+   "cate": -0.00886,
+   "ic_inf": -0.06626,
+   "ic_sup": 0.04854
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 35,
+   "cate": -0.00449,
+   "ic_inf": -0.05832,
+   "ic_sup": 0.04934
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 40,
+   "cate": -0.00012,
+   "ic_inf": -0.05111,
+   "ic_sup": 0.05087
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 45,
+   "cate": 0.00425,
+   "ic_inf": -0.04474,
+   "ic_sup": 0.05324
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 50,
+   "cate": 0.00862,
+   "ic_inf": -0.03934,
+   "ic_sup": 0.05657
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 55,
+   "cate": 0.01299,
+   "ic_inf": -0.03495,
+   "ic_sup": 0.06092
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 60,
+   "cate": 0.01736,
+   "ic_inf": -0.03158,
+   "ic_sup": 0.0663
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 65,
+   "cate": 0.02173,
+   "ic_inf": -0.02917,
+   "ic_sup": 0.07263
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 70,
+   "cate": 0.0261,
+   "ic_inf": -0.02762,
+   "ic_sup": 0.07981
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 75,
+   "cate": 0.03047,
+   "ic_inf": -0.0268,
+   "ic_sup": 0.08773
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 80,
+   "cate": 0.03483,
+   "ic_inf": -0.02657,
+   "ic_sup": 0.09624
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 85,
+   "cate": 0.0392,
+   "ic_inf": -0.02684,
+   "ic_sup": 0.10525
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 90,
+   "cate": 0.04357,
+   "ic_inf": -0.0275,
+   "ic_sup": 0.11465
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 95,
+   "cate": 0.04794,
+   "ic_inf": -0.02848,
+   "ic_sup": 0.12436
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 100,
+   "cate": 0.05231,
+   "ic_inf": -0.02971,
+   "ic_sup": 0.13433
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 105,
+   "cate": 0.05668,
+   "ic_inf": -0.03115,
+   "ic_sup": 0.14451
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 110,
+   "cate": 0.06105,
+   "ic_inf": -0.03275,
+   "ic_sup": 0.15485
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 115,
+   "cate": 0.06542,
+   "ic_inf": -0.03449,
+   "ic_sup": 0.16533
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 120,
+   "cate": 0.06979,
+   "ic_inf": -0.03635,
+   "ic_sup": 0.17593
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 125,
+   "cate": 0.07416,
+   "ic_inf": -0.03829,
+   "ic_sup": 0.18661
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 130,
+   "cate": 0.07853,
+   "ic_inf": -0.04032,
+   "ic_sup": 0.19738
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.0829,
+   "ic_inf": -0.04242,
+   "ic_sup": 0.20822
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.08727,
+   "ic_inf": -0.04457,
+   "ic_sup": 0.21911
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 15,
+   "cate": -0.00351,
+   "ic_inf": -0.06953,
+   "ic_sup": 0.06252
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 20,
+   "cate": 0.00086,
+   "ic_inf": -0.05958,
+   "ic_sup": 0.06131
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 25,
+   "cate": 0.00523,
+   "ic_inf": -0.04995,
+   "ic_sup": 0.06042
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 30,
+   "cate": 0.0096,
+   "ic_inf": -0.04076,
+   "ic_sup": 0.05997
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 35,
+   "cate": 0.01397,
+   "ic_inf": -0.03214,
+   "ic_sup": 0.06009
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 40,
+   "cate": 0.01834,
+   "ic_inf": -0.02427,
+   "ic_sup": 0.06095
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 45,
+   "cate": 0.02271,
+   "ic_inf": -0.01733,
+   "ic_sup": 0.06275
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 50,
+   "cate": 0.02708,
+   "ic_inf": -0.01151,
+   "ic_sup": 0.06567
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 55,
+   "cate": 0.03145,
+   "ic_inf": -0.00695,
+   "ic_sup": 0.06985
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 60,
+   "cate": 0.03582,
+   "ic_inf": -0.00366,
+   "ic_sup": 0.0753
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 65,
+   "cate": 0.04019,
+   "ic_inf": -0.00154,
+   "ic_sup": 0.08191
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 70,
+   "cate": 0.04456,
+   "ic_inf": -0.00041,
+   "ic_sup": 0.08953
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 75,
+   "cate": 0.04893,
+   "ic_inf": -9e-05,
+   "ic_sup": 0.09795
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 80,
+   "cate": 0.0533,
+   "ic_inf": -0.00039,
+   "ic_sup": 0.10698
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 85,
+   "cate": 0.05767,
+   "ic_inf": -0.00115,
+   "ic_sup": 0.11648
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 90,
+   "cate": 0.06204,
+   "ic_inf": -0.00228,
+   "ic_sup": 0.12635
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 95,
+   "cate": 0.06641,
+   "ic_inf": -0.00368,
+   "ic_sup": 0.13649
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 100,
+   "cate": 0.07077,
+   "ic_inf": -0.00529,
+   "ic_sup": 0.14684
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 105,
+   "cate": 0.07514,
+   "ic_inf": -0.00707,
+   "ic_sup": 0.15736
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 110,
+   "cate": 0.07951,
+   "ic_inf": -0.00898,
+   "ic_sup": 0.168
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.08388,
+   "ic_inf": -0.01099,
+   "ic_sup": 0.17876
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.08825,
+   "ic_inf": -0.01309,
+   "ic_sup": 0.18959
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.09262,
+   "ic_inf": -0.01526,
+   "ic_sup": 0.2005
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.09699,
+   "ic_inf": -0.01749,
+   "ic_sup": 0.21147
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.10136,
+   "ic_inf": -0.01976,
+   "ic_sup": 0.22248
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.10573,
+   "ic_inf": -0.02208,
+   "ic_sup": 0.23354
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 15,
+   "cate": 0.01496,
+   "ic_inf": -0.05384,
+   "ic_sup": 0.08375
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 20,
+   "cate": 0.01933,
+   "ic_inf": -0.04402,
+   "ic_sup": 0.08267
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 25,
+   "cate": 0.0237,
+   "ic_inf": -0.03455,
+   "ic_sup": 0.08194
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 30,
+   "cate": 0.02807,
+   "ic_inf": -0.02551,
+   "ic_sup": 0.08164
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 35,
+   "cate": 0.03243,
+   "ic_inf": -0.01703,
+   "ic_sup": 0.0819
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 40,
+   "cate": 0.0368,
+   "ic_inf": -0.00927,
+   "ic_sup": 0.08288
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 45,
+   "cate": 0.04117,
+   "ic_inf": -0.00238,
+   "ic_sup": 0.08473
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 50,
+   "cate": 0.04554,
+   "ic_inf": 0.00347,
+   "ic_sup": 0.08762
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 55,
+   "cate": 0.04991,
+   "ic_inf": 0.00817,
+   "ic_sup": 0.09165
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 60,
+   "cate": 0.05428,
+   "ic_inf": 0.0117,
+   "ic_sup": 0.09686
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 65,
+   "cate": 0.05865,
+   "ic_inf": 0.01413,
+   "ic_sup": 0.10317
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 70,
+   "cate": 0.06302,
+   "ic_inf": 0.01558,
+   "ic_sup": 0.11046
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 75,
+   "cate": 0.06739,
+   "ic_inf": 0.01623,
+   "ic_sup": 0.11855
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 80,
+   "cate": 0.07176,
+   "ic_inf": 0.01623,
+   "ic_sup": 0.12729
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 85,
+   "cate": 0.07613,
+   "ic_inf": 0.01573,
+   "ic_sup": 0.13653
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 90,
+   "cate": 0.0805,
+   "ic_inf": 0.01483,
+   "ic_sup": 0.14616
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.08487,
+   "ic_inf": 0.01364,
+   "ic_sup": 0.1561
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.08924,
+   "ic_inf": 0.0122,
+   "ic_sup": 0.16628
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.09361,
+   "ic_inf": 0.01057,
+   "ic_sup": 0.17664
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.09798,
+   "ic_inf": 0.00879,
+   "ic_sup": 0.18716
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.10235,
+   "ic_inf": 0.0069,
+   "ic_sup": 0.1978
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.10671,
+   "ic_inf": 0.0049,
+   "ic_sup": 0.20853
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.11108,
+   "ic_inf": 0.00282,
+   "ic_sup": 0.21935
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.11545,
+   "ic_inf": 0.00067,
+   "ic_sup": 0.23024
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.11982,
+   "ic_inf": -0.00154,
+   "ic_sup": 0.24118
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.12419,
+   "ic_inf": -0.00379,
+   "ic_sup": 0.25217
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 15,
+   "cate": 0.03342,
+   "ic_inf": -0.0453,
+   "ic_sup": 0.11214
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 20,
+   "cate": 0.03779,
+   "ic_inf": -0.03613,
+   "ic_sup": 0.11171
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 25,
+   "cate": 0.04216,
+   "ic_inf": -0.02734,
+   "ic_sup": 0.11166
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 30,
+   "cate": 0.04653,
+   "ic_inf": -0.01901,
+   "ic_sup": 0.11206
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 35,
+   "cate": 0.0509,
+   "ic_inf": -0.01122,
+   "ic_sup": 0.11301
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 40,
+   "cate": 0.05527,
+   "ic_inf": -0.00407,
+   "ic_sup": 0.1146
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 45,
+   "cate": 0.05964,
+   "ic_inf": 0.00235,
+   "ic_sup": 0.11693
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 50,
+   "cate": 0.06401,
+   "ic_inf": 0.00795,
+   "ic_sup": 0.12006
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 55,
+   "cate": 0.06837,
+   "ic_inf": 0.01269,
+   "ic_sup": 0.12406
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 60,
+   "cate": 0.07274,
+   "ic_inf": 0.01654,
+   "ic_sup": 0.12894
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 65,
+   "cate": 0.07711,
+   "ic_inf": 0.01954,
+   "ic_sup": 0.13469
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.08148,
+   "ic_inf": 0.02173,
+   "ic_sup": 0.14123
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.08585,
+   "ic_inf": 0.02321,
+   "ic_sup": 0.14849
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.09022,
+   "ic_inf": 0.02407,
+   "ic_sup": 0.15638
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.09459,
+   "ic_inf": 0.02439,
+   "ic_sup": 0.16479
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.09896,
+   "ic_inf": 0.02427,
+   "ic_sup": 0.17365
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.10333,
+   "ic_inf": 0.02378,
+   "ic_sup": 0.18288
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.1077,
+   "ic_inf": 0.02299,
+   "ic_sup": 0.19241
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.11207,
+   "ic_inf": 0.02195,
+   "ic_sup": 0.20219
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.11644,
+   "ic_inf": 0.02069,
+   "ic_sup": 0.21218
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.12081,
+   "ic_inf": 0.01926,
+   "ic_sup": 0.22235
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.12518,
+   "ic_inf": 0.01768,
+   "ic_sup": 0.23267
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.12955,
+   "ic_inf": 0.01598,
+   "ic_sup": 0.24311
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.13392,
+   "ic_inf": 0.01418,
+   "ic_sup": 0.25365
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.13829,
+   "ic_inf": 0.01228,
+   "ic_sup": 0.26429
+  },
+  {
+   "dx": "Insuf. respiratoria aguda",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.14265,
+   "ic_inf": 0.01031,
+   "ic_sup": 0.275
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 15,
+   "cate": 0.02223,
+   "ic_inf": -0.06826,
+   "ic_sup": 0.11272
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 20,
+   "cate": 0.0266,
+   "ic_inf": -0.05886,
+   "ic_sup": 0.11207
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 25,
+   "cate": 0.03097,
+   "ic_inf": -0.04976,
+   "ic_sup": 0.11171
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 30,
+   "cate": 0.03534,
+   "ic_inf": -0.04102,
+   "ic_sup": 0.1117
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 35,
+   "cate": 0.03971,
+   "ic_inf": -0.0327,
+   "ic_sup": 0.11212
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 40,
+   "cate": 0.04408,
+   "ic_inf": -0.02486,
+   "ic_sup": 0.11302
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 45,
+   "cate": 0.04845,
+   "ic_inf": -0.0176,
+   "ic_sup": 0.1145
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 50,
+   "cate": 0.05282,
+   "ic_inf": -0.01098,
+   "ic_sup": 0.11662
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 55,
+   "cate": 0.05719,
+   "ic_inf": -0.00508,
+   "ic_sup": 0.11946
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 60,
+   "cate": 0.06156,
+   "ic_inf": 5e-05,
+   "ic_sup": 0.12306
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 65,
+   "cate": 0.06593,
+   "ic_inf": 0.00439,
+   "ic_sup": 0.12747
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 70,
+   "cate": 0.0703,
+   "ic_inf": 0.00792,
+   "ic_sup": 0.13267
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 75,
+   "cate": 0.07467,
+   "ic_inf": 0.01069,
+   "ic_sup": 0.13864
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 80,
+   "cate": 0.07904,
+   "ic_inf": 0.01275,
+   "ic_sup": 0.14532
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 85,
+   "cate": 0.0834,
+   "ic_inf": 0.01417,
+   "ic_sup": 0.15264
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 90,
+   "cate": 0.08777,
+   "ic_inf": 0.01503,
+   "ic_sup": 0.16052
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 95,
+   "cate": 0.09214,
+   "ic_inf": 0.01541,
+   "ic_sup": 0.16888
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 100,
+   "cate": 0.09651,
+   "ic_inf": 0.01537,
+   "ic_sup": 0.17766
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 105,
+   "cate": 0.10088,
+   "ic_inf": 0.01498,
+   "ic_sup": 0.18678
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 110,
+   "cate": 0.10525,
+   "ic_inf": 0.0143,
+   "ic_sup": 0.1962
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 115,
+   "cate": 0.10962,
+   "ic_inf": 0.01337,
+   "ic_sup": 0.20587
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 120,
+   "cate": 0.11399,
+   "ic_inf": 0.01223,
+   "ic_sup": 0.21575
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 125,
+   "cate": 0.11836,
+   "ic_inf": 0.01091,
+   "ic_sup": 0.22581
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 130,
+   "cate": 0.12273,
+   "ic_inf": 0.00944,
+   "ic_sup": 0.23602
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.1271,
+   "ic_inf": 0.00784,
+   "ic_sup": 0.24635
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.13147,
+   "ic_inf": 0.00614,
+   "ic_sup": 0.2568
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 15,
+   "cate": 0.0407,
+   "ic_inf": -0.04606,
+   "ic_sup": 0.12746
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 20,
+   "cate": 0.04506,
+   "ic_inf": -0.03636,
+   "ic_sup": 0.12649
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 25,
+   "cate": 0.04943,
+   "ic_inf": -0.02692,
+   "ic_sup": 0.12579
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 30,
+   "cate": 0.0538,
+   "ic_inf": -0.01782,
+   "ic_sup": 0.12543
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 35,
+   "cate": 0.05817,
+   "ic_inf": -0.00912,
+   "ic_sup": 0.12547
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 40,
+   "cate": 0.06254,
+   "ic_inf": -0.00091,
+   "ic_sup": 0.12599
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 45,
+   "cate": 0.06691,
+   "ic_inf": 0.00673,
+   "ic_sup": 0.1271
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 50,
+   "cate": 0.07128,
+   "ic_inf": 0.01369,
+   "ic_sup": 0.12888
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 55,
+   "cate": 0.07565,
+   "ic_inf": 0.01988,
+   "ic_sup": 0.13143
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 60,
+   "cate": 0.08002,
+   "ic_inf": 0.02522,
+   "ic_sup": 0.13482
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 65,
+   "cate": 0.08439,
+   "ic_inf": 0.02967,
+   "ic_sup": 0.13911
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 70,
+   "cate": 0.08876,
+   "ic_inf": 0.03322,
+   "ic_sup": 0.1443
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 75,
+   "cate": 0.09313,
+   "ic_inf": 0.03591,
+   "ic_sup": 0.15034
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 80,
+   "cate": 0.0975,
+   "ic_inf": 0.03782,
+   "ic_sup": 0.15717
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 85,
+   "cate": 0.10187,
+   "ic_inf": 0.03904,
+   "ic_sup": 0.1647
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 90,
+   "cate": 0.10624,
+   "ic_inf": 0.03966,
+   "ic_sup": 0.17281
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 95,
+   "cate": 0.11061,
+   "ic_inf": 0.03978,
+   "ic_sup": 0.18143
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 100,
+   "cate": 0.11498,
+   "ic_inf": 0.03948,
+   "ic_sup": 0.19047
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 105,
+   "cate": 0.11934,
+   "ic_inf": 0.03884,
+   "ic_sup": 0.19985
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 110,
+   "cate": 0.12371,
+   "ic_inf": 0.03792,
+   "ic_sup": 0.20951
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.12808,
+   "ic_inf": 0.03676,
+   "ic_sup": 0.21941
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.13245,
+   "ic_inf": 0.03541,
+   "ic_sup": 0.2295
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.13682,
+   "ic_inf": 0.03389,
+   "ic_sup": 0.23975
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.14119,
+   "ic_inf": 0.03224,
+   "ic_sup": 0.25014
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.14556,
+   "ic_inf": 0.03048,
+   "ic_sup": 0.26065
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.14993,
+   "ic_inf": 0.02861,
+   "ic_sup": 0.27125
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 15,
+   "cate": 0.05916,
+   "ic_inf": -0.03004,
+   "ic_sup": 0.14836
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 20,
+   "cate": 0.06353,
+   "ic_inf": -0.02041,
+   "ic_sup": 0.14747
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 25,
+   "cate": 0.0679,
+   "ic_inf": -0.01106,
+   "ic_sup": 0.14685
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 30,
+   "cate": 0.07227,
+   "ic_inf": -0.00203,
+   "ic_sup": 0.14657
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 35,
+   "cate": 0.07664,
+   "ic_inf": 0.00659,
+   "ic_sup": 0.14668
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 40,
+   "cate": 0.081,
+   "ic_inf": 0.01475,
+   "ic_sup": 0.14726
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 45,
+   "cate": 0.08537,
+   "ic_inf": 0.02234,
+   "ic_sup": 0.14841
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 50,
+   "cate": 0.08974,
+   "ic_inf": 0.02929,
+   "ic_sup": 0.1502
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 55,
+   "cate": 0.09411,
+   "ic_inf": 0.0355,
+   "ic_sup": 0.15273
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 60,
+   "cate": 0.09848,
+   "ic_inf": 0.04091,
+   "ic_sup": 0.15606
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 65,
+   "cate": 0.10285,
+   "ic_inf": 0.04547,
+   "ic_sup": 0.16024
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 70,
+   "cate": 0.10722,
+   "ic_inf": 0.04917,
+   "ic_sup": 0.16527
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 75,
+   "cate": 0.11159,
+   "ic_inf": 0.05205,
+   "ic_sup": 0.17113
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 80,
+   "cate": 0.11596,
+   "ic_inf": 0.05415,
+   "ic_sup": 0.17777
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 85,
+   "cate": 0.12033,
+   "ic_inf": 0.05557,
+   "ic_sup": 0.18508
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 90,
+   "cate": 0.1247,
+   "ic_inf": 0.0564,
+   "ic_sup": 0.193
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.12907,
+   "ic_inf": 0.05671,
+   "ic_sup": 0.20143
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.13344,
+   "ic_inf": 0.05659,
+   "ic_sup": 0.21029
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.13781,
+   "ic_inf": 0.05611,
+   "ic_sup": 0.2195
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.14218,
+   "ic_inf": 0.05534,
+   "ic_sup": 0.22902
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.14655,
+   "ic_inf": 0.05431,
+   "ic_sup": 0.23878
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.15092,
+   "ic_inf": 0.05308,
+   "ic_sup": 0.24875
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.15528,
+   "ic_inf": 0.05167,
+   "ic_sup": 0.2589
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.15965,
+   "ic_inf": 0.05012,
+   "ic_sup": 0.26919
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.16402,
+   "ic_inf": 0.04844,
+   "ic_sup": 0.2796
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.16839,
+   "ic_inf": 0.04666,
+   "ic_sup": 0.29012
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 15,
+   "cate": 0.07762,
+   "ic_inf": -0.01974,
+   "ic_sup": 0.17498
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 20,
+   "cate": 0.08199,
+   "ic_inf": -0.0105,
+   "ic_sup": 0.17448
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 25,
+   "cate": 0.08636,
+   "ic_inf": -0.00155,
+   "ic_sup": 0.17427
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 30,
+   "cate": 0.09073,
+   "ic_inf": 0.00705,
+   "ic_sup": 0.17441
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 35,
+   "cate": 0.0951,
+   "ic_inf": 0.01526,
+   "ic_sup": 0.17494
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 40,
+   "cate": 0.09947,
+   "ic_inf": 0.02301,
+   "ic_sup": 0.17592
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 45,
+   "cate": 0.10384,
+   "ic_inf": 0.03025,
+   "ic_sup": 0.17742
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 50,
+   "cate": 0.10821,
+   "ic_inf": 0.0369,
+   "ic_sup": 0.17951
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 55,
+   "cate": 0.11258,
+   "ic_inf": 0.04292,
+   "ic_sup": 0.18223
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 60,
+   "cate": 0.11694,
+   "ic_inf": 0.04826,
+   "ic_sup": 0.18563
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 65,
+   "cate": 0.12131,
+   "ic_inf": 0.05289,
+   "ic_sup": 0.18974
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.12568,
+   "ic_inf": 0.05679,
+   "ic_sup": 0.19458
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.13005,
+   "ic_inf": 0.05999,
+   "ic_sup": 0.20011
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.13442,
+   "ic_inf": 0.06252,
+   "ic_sup": 0.20632
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.13879,
+   "ic_inf": 0.06443,
+   "ic_sup": 0.21316
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.14316,
+   "ic_inf": 0.06577,
+   "ic_sup": 0.22055
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.14753,
+   "ic_inf": 0.06662,
+   "ic_sup": 0.22844
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.1519,
+   "ic_inf": 0.06703,
+   "ic_sup": 0.23677
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.15627,
+   "ic_inf": 0.06706,
+   "ic_sup": 0.24548
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.16064,
+   "ic_inf": 0.06677,
+   "ic_sup": 0.25451
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.16501,
+   "ic_inf": 0.06619,
+   "ic_sup": 0.26383
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.16938,
+   "ic_inf": 0.06537,
+   "ic_sup": 0.27338
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.17375,
+   "ic_inf": 0.06435,
+   "ic_sup": 0.28314
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.17812,
+   "ic_inf": 0.06315,
+   "ic_sup": 0.29308
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.18249,
+   "ic_inf": 0.0618,
+   "ic_sup": 0.30317
+  },
+  {
+   "dx": "Falla multiorgánica + sepsis",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.18686,
+   "ic_inf": 0.06032,
+   "ic_sup": 0.31339
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 15,
+   "cate": -0.00684,
+   "ic_inf": -0.14004,
+   "ic_sup": 0.12637
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 20,
+   "cate": -0.00247,
+   "ic_inf": -0.13169,
+   "ic_sup": 0.12676
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 25,
+   "cate": 0.0019,
+   "ic_inf": -0.12362,
+   "ic_sup": 0.12742
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 30,
+   "cate": 0.00627,
+   "ic_inf": -0.11583,
+   "ic_sup": 0.12837
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 35,
+   "cate": 0.01064,
+   "ic_inf": -0.10836,
+   "ic_sup": 0.12964
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 40,
+   "cate": 0.01501,
+   "ic_inf": -0.10123,
+   "ic_sup": 0.13125
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 45,
+   "cate": 0.01938,
+   "ic_inf": -0.09447,
+   "ic_sup": 0.13323
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 50,
+   "cate": 0.02375,
+   "ic_inf": -0.0881,
+   "ic_sup": 0.1356
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 55,
+   "cate": 0.02812,
+   "ic_inf": -0.08215,
+   "ic_sup": 0.13838
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 60,
+   "cate": 0.03249,
+   "ic_inf": -0.07662,
+   "ic_sup": 0.1416
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 65,
+   "cate": 0.03686,
+   "ic_inf": -0.07154,
+   "ic_sup": 0.14526
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 70,
+   "cate": 0.04123,
+   "ic_inf": -0.06691,
+   "ic_sup": 0.14937
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 75,
+   "cate": 0.0456,
+   "ic_inf": -0.06274,
+   "ic_sup": 0.15393
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 80,
+   "cate": 0.04997,
+   "ic_inf": -0.05902,
+   "ic_sup": 0.15895
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 85,
+   "cate": 0.05434,
+   "ic_inf": -0.05575,
+   "ic_sup": 0.16442
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 90,
+   "cate": 0.0587,
+   "ic_inf": -0.05291,
+   "ic_sup": 0.17032
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 95,
+   "cate": 0.06307,
+   "ic_inf": -0.05049,
+   "ic_sup": 0.17663
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 100,
+   "cate": 0.06744,
+   "ic_inf": -0.04846,
+   "ic_sup": 0.18334
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 105,
+   "cate": 0.07181,
+   "ic_inf": -0.0468,
+   "ic_sup": 0.19042
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 110,
+   "cate": 0.07618,
+   "ic_inf": -0.04548,
+   "ic_sup": 0.19785
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 115,
+   "cate": 0.08055,
+   "ic_inf": -0.04449,
+   "ic_sup": 0.20559
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 120,
+   "cate": 0.08492,
+   "ic_inf": -0.04379,
+   "ic_sup": 0.21363
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 125,
+   "cate": 0.08929,
+   "ic_inf": -0.04337,
+   "ic_sup": 0.22195
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 130,
+   "cate": 0.09366,
+   "ic_inf": -0.04319,
+   "ic_sup": 0.23051
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.09803,
+   "ic_inf": -0.04323,
+   "ic_sup": 0.23929
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.1024,
+   "ic_inf": -0.04349,
+   "ic_sup": 0.24828
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 15,
+   "cate": 0.01163,
+   "ic_inf": -0.11932,
+   "ic_sup": 0.14257
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 20,
+   "cate": 0.01599,
+   "ic_inf": -0.11085,
+   "ic_sup": 0.14284
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 25,
+   "cate": 0.02036,
+   "ic_inf": -0.10265,
+   "ic_sup": 0.14338
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 30,
+   "cate": 0.02473,
+   "ic_inf": -0.09473,
+   "ic_sup": 0.1442
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 35,
+   "cate": 0.0291,
+   "ic_inf": -0.08714,
+   "ic_sup": 0.14534
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 40,
+   "cate": 0.03347,
+   "ic_inf": -0.07989,
+   "ic_sup": 0.14683
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 45,
+   "cate": 0.03784,
+   "ic_inf": -0.073,
+   "ic_sup": 0.14869
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 50,
+   "cate": 0.04221,
+   "ic_inf": -0.06652,
+   "ic_sup": 0.15094
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 55,
+   "cate": 0.04658,
+   "ic_inf": -0.06046,
+   "ic_sup": 0.15362
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 60,
+   "cate": 0.05095,
+   "ic_inf": -0.05483,
+   "ic_sup": 0.15674
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 65,
+   "cate": 0.05532,
+   "ic_inf": -0.04967,
+   "ic_sup": 0.16031
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 70,
+   "cate": 0.05969,
+   "ic_inf": -0.04497,
+   "ic_sup": 0.16435
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 75,
+   "cate": 0.06406,
+   "ic_inf": -0.04074,
+   "ic_sup": 0.16886
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 80,
+   "cate": 0.06843,
+   "ic_inf": -0.03698,
+   "ic_sup": 0.17384
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 85,
+   "cate": 0.0728,
+   "ic_inf": -0.03369,
+   "ic_sup": 0.17928
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 90,
+   "cate": 0.07717,
+   "ic_inf": -0.03084,
+   "ic_sup": 0.18517
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 95,
+   "cate": 0.08154,
+   "ic_inf": -0.02842,
+   "ic_sup": 0.19149
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 100,
+   "cate": 0.08591,
+   "ic_inf": -0.0264,
+   "ic_sup": 0.19821
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 105,
+   "cate": 0.09027,
+   "ic_inf": -0.02477,
+   "ic_sup": 0.20532
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 110,
+   "cate": 0.09464,
+   "ic_inf": -0.02349,
+   "ic_sup": 0.21278
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.09901,
+   "ic_inf": -0.02254,
+   "ic_sup": 0.22057
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.10338,
+   "ic_inf": -0.0219,
+   "ic_sup": 0.22866
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.10775,
+   "ic_inf": -0.02152,
+   "ic_sup": 0.23703
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.11212,
+   "ic_inf": -0.0214,
+   "ic_sup": 0.24565
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.11649,
+   "ic_inf": -0.02151,
+   "ic_sup": 0.25449
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.12086,
+   "ic_inf": -0.02182,
+   "ic_sup": 0.26354
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 15,
+   "cate": 0.03009,
+   "ic_inf": -0.10274,
+   "ic_sup": 0.16291
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 20,
+   "cate": 0.03446,
+   "ic_inf": -0.09428,
+   "ic_sup": 0.16319
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 25,
+   "cate": 0.03883,
+   "ic_inf": -0.08608,
+   "ic_sup": 0.16373
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 30,
+   "cate": 0.0432,
+   "ic_inf": -0.07816,
+   "ic_sup": 0.16456
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 35,
+   "cate": 0.04757,
+   "ic_inf": -0.07056,
+   "ic_sup": 0.16569
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 40,
+   "cate": 0.05193,
+   "ic_inf": -0.0633,
+   "ic_sup": 0.16717
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 45,
+   "cate": 0.0563,
+   "ic_inf": -0.0564,
+   "ic_sup": 0.16901
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 50,
+   "cate": 0.06067,
+   "ic_inf": -0.0499,
+   "ic_sup": 0.17124
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 55,
+   "cate": 0.06504,
+   "ic_inf": -0.0438,
+   "ic_sup": 0.17389
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 60,
+   "cate": 0.06941,
+   "ic_inf": -0.03814,
+   "ic_sup": 0.17696
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 65,
+   "cate": 0.07378,
+   "ic_inf": -0.03292,
+   "ic_sup": 0.18049
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 70,
+   "cate": 0.07815,
+   "ic_inf": -0.02817,
+   "ic_sup": 0.18447
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 75,
+   "cate": 0.08252,
+   "ic_inf": -0.02387,
+   "ic_sup": 0.18892
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 80,
+   "cate": 0.08689,
+   "ic_inf": -0.02005,
+   "ic_sup": 0.19383
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 85,
+   "cate": 0.09126,
+   "ic_inf": -0.01667,
+   "ic_sup": 0.19919
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 90,
+   "cate": 0.09563,
+   "ic_inf": -0.01374,
+   "ic_sup": 0.205
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.1,
+   "ic_inf": -0.01124,
+   "ic_sup": 0.21124
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.10437,
+   "ic_inf": -0.00914,
+   "ic_sup": 0.21788
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.10874,
+   "ic_inf": -0.00742,
+   "ic_sup": 0.2249
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.11311,
+   "ic_inf": -0.00606,
+   "ic_sup": 0.23228
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.11748,
+   "ic_inf": -0.00503,
+   "ic_sup": 0.23998
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.12185,
+   "ic_inf": -0.0043,
+   "ic_sup": 0.24799
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.12621,
+   "ic_inf": -0.00385,
+   "ic_sup": 0.25628
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.13058,
+   "ic_inf": -0.00366,
+   "ic_sup": 0.26483
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.13495,
+   "ic_inf": -0.00369,
+   "ic_sup": 0.2736
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.13932,
+   "ic_inf": -0.00394,
+   "ic_sup": 0.28258
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 15,
+   "cate": 0.04855,
+   "ic_inf": -0.09012,
+   "ic_sup": 0.18722
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 20,
+   "cate": 0.05292,
+   "ic_inf": -0.08178,
+   "ic_sup": 0.18762
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 25,
+   "cate": 0.05729,
+   "ic_inf": -0.07371,
+   "ic_sup": 0.18829
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 30,
+   "cate": 0.06166,
+   "ic_inf": -0.06591,
+   "ic_sup": 0.18923
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 35,
+   "cate": 0.06603,
+   "ic_inf": -0.05842,
+   "ic_sup": 0.19048
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 40,
+   "cate": 0.0704,
+   "ic_inf": -0.05126,
+   "ic_sup": 0.19205
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 45,
+   "cate": 0.07477,
+   "ic_inf": -0.04444,
+   "ic_sup": 0.19397
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 50,
+   "cate": 0.07914,
+   "ic_inf": -0.03799,
+   "ic_sup": 0.19627
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 55,
+   "cate": 0.08351,
+   "ic_inf": -0.03194,
+   "ic_sup": 0.19895
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 60,
+   "cate": 0.08787,
+   "ic_inf": -0.02629,
+   "ic_sup": 0.20204
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 65,
+   "cate": 0.09224,
+   "ic_inf": -0.02107,
+   "ic_sup": 0.20556
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.09661,
+   "ic_inf": -0.01628,
+   "ic_sup": 0.20951
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.10098,
+   "ic_inf": -0.01193,
+   "ic_sup": 0.21389
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.10535,
+   "ic_inf": -0.00801,
+   "ic_sup": 0.21871
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.10972,
+   "ic_inf": -0.00452,
+   "ic_sup": 0.22396
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.11409,
+   "ic_inf": -0.00145,
+   "ic_sup": 0.22964
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.11846,
+   "ic_inf": 0.0012,
+   "ic_sup": 0.23572
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.12283,
+   "ic_inf": 0.00347,
+   "ic_sup": 0.24219
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.1272,
+   "ic_inf": 0.00537,
+   "ic_sup": 0.24903
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.13157,
+   "ic_inf": 0.00692,
+   "ic_sup": 0.25622
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.13594,
+   "ic_inf": 0.00815,
+   "ic_sup": 0.26373
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.14031,
+   "ic_inf": 0.00907,
+   "ic_sup": 0.27155
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.14468,
+   "ic_inf": 0.00972,
+   "ic_sup": 0.27964
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.14905,
+   "ic_inf": 0.01011,
+   "ic_sup": 0.28799
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.15342,
+   "ic_inf": 0.01026,
+   "ic_sup": 0.29657
+  },
+  {
+   "dx": "Falla multiorgánica + cáncer",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.15779,
+   "ic_inf": 0.0102,
+   "ic_sup": 0.30537
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 15,
+   "cate": -0.03449,
+   "ic_inf": -0.11294,
+   "ic_sup": 0.04397
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 20,
+   "cate": -0.03012,
+   "ic_inf": -0.10633,
+   "ic_sup": 0.04609
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 25,
+   "cate": -0.02575,
+   "ic_inf": -0.10031,
+   "ic_sup": 0.04882
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 30,
+   "cate": -0.02138,
+   "ic_inf": -0.09493,
+   "ic_sup": 0.05218
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 35,
+   "cate": -0.01701,
+   "ic_inf": -0.09022,
+   "ic_sup": 0.0562
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 40,
+   "cate": -0.01264,
+   "ic_inf": -0.08618,
+   "ic_sup": 0.0609
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 45,
+   "cate": -0.00827,
+   "ic_inf": -0.0828,
+   "ic_sup": 0.06626
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 50,
+   "cate": -0.0039,
+   "ic_inf": -0.08006,
+   "ic_sup": 0.07226
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 55,
+   "cate": 0.00047,
+   "ic_inf": -0.07792,
+   "ic_sup": 0.07886
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 60,
+   "cate": 0.00484,
+   "ic_inf": -0.07633,
+   "ic_sup": 0.08601
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 65,
+   "cate": 0.00921,
+   "ic_inf": -0.07524,
+   "ic_sup": 0.09365
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 70,
+   "cate": 0.01358,
+   "ic_inf": -0.07458,
+   "ic_sup": 0.10174
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 75,
+   "cate": 0.01795,
+   "ic_inf": -0.07431,
+   "ic_sup": 0.11021
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 80,
+   "cate": 0.02232,
+   "ic_inf": -0.07438,
+   "ic_sup": 0.11901
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 85,
+   "cate": 0.02669,
+   "ic_inf": -0.07474,
+   "ic_sup": 0.12811
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 90,
+   "cate": 0.03106,
+   "ic_inf": -0.07536,
+   "ic_sup": 0.13747
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 95,
+   "cate": 0.03542,
+   "ic_inf": -0.07619,
+   "ic_sup": 0.14704
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 100,
+   "cate": 0.03979,
+   "ic_inf": -0.07722,
+   "ic_sup": 0.15681
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 105,
+   "cate": 0.04416,
+   "ic_inf": -0.07841,
+   "ic_sup": 0.16674
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 110,
+   "cate": 0.04853,
+   "ic_inf": -0.07975,
+   "ic_sup": 0.17681
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 115,
+   "cate": 0.0529,
+   "ic_inf": -0.08121,
+   "ic_sup": 0.18701
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 120,
+   "cate": 0.05727,
+   "ic_inf": -0.08278,
+   "ic_sup": 0.19732
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 125,
+   "cate": 0.06164,
+   "ic_inf": -0.08445,
+   "ic_sup": 0.20773
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 130,
+   "cate": 0.06601,
+   "ic_inf": -0.0862,
+   "ic_sup": 0.21822
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.07038,
+   "ic_inf": -0.08803,
+   "ic_sup": 0.22879
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.07475,
+   "ic_inf": -0.08992,
+   "ic_sup": 0.23942
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 15,
+   "cate": -0.01602,
+   "ic_inf": -0.08951,
+   "ic_sup": 0.05747
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 20,
+   "cate": -0.01165,
+   "ic_inf": -0.08265,
+   "ic_sup": 0.05934
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 25,
+   "cate": -0.00728,
+   "ic_inf": -0.07642,
+   "ic_sup": 0.06185
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 30,
+   "cate": -0.00292,
+   "ic_inf": -0.07086,
+   "ic_sup": 0.06503
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 35,
+   "cate": 0.00145,
+   "ic_inf": -0.06602,
+   "ic_sup": 0.06893
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 40,
+   "cate": 0.00582,
+   "ic_inf": -0.06191,
+   "ic_sup": 0.07356
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 45,
+   "cate": 0.01019,
+   "ic_inf": -0.05852,
+   "ic_sup": 0.07891
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 50,
+   "cate": 0.01456,
+   "ic_inf": -0.05583,
+   "ic_sup": 0.08495
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 55,
+   "cate": 0.01893,
+   "ic_inf": -0.05377,
+   "ic_sup": 0.09164
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 60,
+   "cate": 0.0233,
+   "ic_inf": -0.0523,
+   "ic_sup": 0.09891
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 65,
+   "cate": 0.02767,
+   "ic_inf": -0.05136,
+   "ic_sup": 0.1067
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 70,
+   "cate": 0.03204,
+   "ic_inf": -0.05086,
+   "ic_sup": 0.11494
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 75,
+   "cate": 0.03641,
+   "ic_inf": -0.05077,
+   "ic_sup": 0.12358
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 80,
+   "cate": 0.04078,
+   "ic_inf": -0.05101,
+   "ic_sup": 0.13257
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 85,
+   "cate": 0.04515,
+   "ic_inf": -0.05154,
+   "ic_sup": 0.14184
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 90,
+   "cate": 0.04952,
+   "ic_inf": -0.05232,
+   "ic_sup": 0.15136
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 95,
+   "cate": 0.05389,
+   "ic_inf": -0.05332,
+   "ic_sup": 0.16109
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 100,
+   "cate": 0.05826,
+   "ic_inf": -0.0545,
+   "ic_sup": 0.17101
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 105,
+   "cate": 0.06263,
+   "ic_inf": -0.05584,
+   "ic_sup": 0.18109
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 110,
+   "cate": 0.067,
+   "ic_inf": -0.05731,
+   "ic_sup": 0.1913
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.07136,
+   "ic_inf": -0.0589,
+   "ic_sup": 0.20163
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.07573,
+   "ic_inf": -0.06059,
+   "ic_sup": 0.21206
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.0801,
+   "ic_inf": -0.06237,
+   "ic_sup": 0.22257
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.08447,
+   "ic_inf": -0.06423,
+   "ic_sup": 0.23317
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.08884,
+   "ic_inf": -0.06615,
+   "ic_sup": 0.24384
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.09321,
+   "ic_inf": -0.06814,
+   "ic_sup": 0.25456
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 15,
+   "cate": 0.00244,
+   "ic_inf": -0.07331,
+   "ic_sup": 0.07819
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 20,
+   "cate": 0.00681,
+   "ic_inf": -0.06643,
+   "ic_sup": 0.08005
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 25,
+   "cate": 0.01118,
+   "ic_inf": -0.06017,
+   "ic_sup": 0.08252
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 30,
+   "cate": 0.01555,
+   "ic_inf": -0.05455,
+   "ic_sup": 0.08565
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 35,
+   "cate": 0.01992,
+   "ic_inf": -0.04963,
+   "ic_sup": 0.08947
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 40,
+   "cate": 0.02429,
+   "ic_inf": -0.04542,
+   "ic_sup": 0.09399
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 45,
+   "cate": 0.02866,
+   "ic_inf": -0.04191,
+   "ic_sup": 0.09922
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 50,
+   "cate": 0.03302,
+   "ic_inf": -0.03908,
+   "ic_sup": 0.10513
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 55,
+   "cate": 0.03739,
+   "ic_inf": -0.03689,
+   "ic_sup": 0.11167
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 60,
+   "cate": 0.04176,
+   "ic_inf": -0.03527,
+   "ic_sup": 0.1188
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 65,
+   "cate": 0.04613,
+   "ic_inf": -0.03418,
+   "ic_sup": 0.12645
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 70,
+   "cate": 0.0505,
+   "ic_inf": -0.03355,
+   "ic_sup": 0.13456
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 75,
+   "cate": 0.05487,
+   "ic_inf": -0.03332,
+   "ic_sup": 0.14307
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 80,
+   "cate": 0.05924,
+   "ic_inf": -0.03344,
+   "ic_sup": 0.15193
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 85,
+   "cate": 0.06361,
+   "ic_inf": -0.03387,
+   "ic_sup": 0.16109
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 90,
+   "cate": 0.06798,
+   "ic_inf": -0.03454,
+   "ic_sup": 0.17051
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.07235,
+   "ic_inf": -0.03545,
+   "ic_sup": 0.18015
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.07672,
+   "ic_inf": -0.03654,
+   "ic_sup": 0.18998
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.08109,
+   "ic_inf": -0.0378,
+   "ic_sup": 0.19997
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.08546,
+   "ic_inf": -0.03919,
+   "ic_sup": 0.21011
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.08983,
+   "ic_inf": -0.04072,
+   "ic_sup": 0.22037
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.0942,
+   "ic_inf": -0.04235,
+   "ic_sup": 0.23074
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.09857,
+   "ic_inf": -0.04407,
+   "ic_sup": 0.2412
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.10294,
+   "ic_inf": -0.04588,
+   "ic_sup": 0.25175
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.1073,
+   "ic_inf": -0.04776,
+   "ic_sup": 0.26237
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.11167,
+   "ic_inf": -0.0497,
+   "ic_sup": 0.27305
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 15,
+   "cate": 0.0209,
+   "ic_inf": -0.06375,
+   "ic_sup": 0.10555
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 20,
+   "cate": 0.02527,
+   "ic_inf": -0.05706,
+   "ic_sup": 0.10761
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 25,
+   "cate": 0.02964,
+   "ic_inf": -0.05093,
+   "ic_sup": 0.11021
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 30,
+   "cate": 0.03401,
+   "ic_inf": -0.04538,
+   "ic_sup": 0.1134
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 35,
+   "cate": 0.03838,
+   "ic_inf": -0.04044,
+   "ic_sup": 0.1172
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 40,
+   "cate": 0.04275,
+   "ic_inf": -0.03613,
+   "ic_sup": 0.12162
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 45,
+   "cate": 0.04712,
+   "ic_inf": -0.03244,
+   "ic_sup": 0.12667
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 50,
+   "cate": 0.05149,
+   "ic_inf": -0.02935,
+   "ic_sup": 0.13233
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 55,
+   "cate": 0.05586,
+   "ic_inf": -0.02685,
+   "ic_sup": 0.13856
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 60,
+   "cate": 0.06023,
+   "ic_inf": -0.02489,
+   "ic_sup": 0.14534
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 65,
+   "cate": 0.0646,
+   "ic_inf": -0.02342,
+   "ic_sup": 0.15261
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.06896,
+   "ic_inf": -0.02241,
+   "ic_sup": 0.16033
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.07333,
+   "ic_inf": -0.02179,
+   "ic_sup": 0.16846
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.0777,
+   "ic_inf": -0.02153,
+   "ic_sup": 0.17694
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.08207,
+   "ic_inf": -0.02159,
+   "ic_sup": 0.18573
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.08644,
+   "ic_inf": -0.02192,
+   "ic_sup": 0.1948
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.09081,
+   "ic_inf": -0.02249,
+   "ic_sup": 0.20411
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.09518,
+   "ic_inf": -0.02327,
+   "ic_sup": 0.21364
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.09955,
+   "ic_inf": -0.02424,
+   "ic_sup": 0.22334
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.10392,
+   "ic_inf": -0.02537,
+   "ic_sup": 0.23321
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.10829,
+   "ic_inf": -0.02664,
+   "ic_sup": 0.24322
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.11266,
+   "ic_inf": -0.02804,
+   "ic_sup": 0.25336
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.11703,
+   "ic_inf": -0.02955,
+   "ic_sup": 0.2636
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.1214,
+   "ic_inf": -0.03115,
+   "ic_sup": 0.27395
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.12577,
+   "ic_inf": -0.03284,
+   "ic_sup": 0.28438
+  },
+  {
+   "dx": "Insuf. cardíaca",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.13014,
+   "ic_inf": -0.03461,
+   "ic_sup": 0.29488
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 15,
+   "cate": -0.01494,
+   "ic_inf": -0.14926,
+   "ic_sup": 0.11939
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 20,
+   "cate": -0.01057,
+   "ic_inf": -0.14253,
+   "ic_sup": 0.1214
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 25,
+   "cate": -0.0062,
+   "ic_inf": -0.13613,
+   "ic_sup": 0.12374
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 30,
+   "cate": -0.00183,
+   "ic_inf": -0.13009,
+   "ic_sup": 0.12643
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 35,
+   "cate": 0.00254,
+   "ic_inf": -0.12441,
+   "ic_sup": 0.1295
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 40,
+   "cate": 0.00691,
+   "ic_inf": -0.11912,
+   "ic_sup": 0.13294
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 45,
+   "cate": 0.01128,
+   "ic_inf": -0.11421,
+   "ic_sup": 0.13677
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 50,
+   "cate": 0.01565,
+   "ic_inf": -0.10969,
+   "ic_sup": 0.14099
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 55,
+   "cate": 0.02002,
+   "ic_inf": -0.10557,
+   "ic_sup": 0.14561
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 60,
+   "cate": 0.02439,
+   "ic_inf": -0.10183,
+   "ic_sup": 0.15061
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 65,
+   "cate": 0.02876,
+   "ic_inf": -0.09849,
+   "ic_sup": 0.15601
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 70,
+   "cate": 0.03313,
+   "ic_inf": -0.09552,
+   "ic_sup": 0.16178
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 75,
+   "cate": 0.0375,
+   "ic_inf": -0.09291,
+   "ic_sup": 0.16791
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 80,
+   "cate": 0.04187,
+   "ic_inf": -0.09066,
+   "ic_sup": 0.17439
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 85,
+   "cate": 0.04624,
+   "ic_inf": -0.08873,
+   "ic_sup": 0.18121
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 90,
+   "cate": 0.05061,
+   "ic_inf": -0.08713,
+   "ic_sup": 0.18834
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 95,
+   "cate": 0.05498,
+   "ic_inf": -0.08582,
+   "ic_sup": 0.19577
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 100,
+   "cate": 0.05934,
+   "ic_inf": -0.08478,
+   "ic_sup": 0.20347
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 105,
+   "cate": 0.06371,
+   "ic_inf": -0.08401,
+   "ic_sup": 0.21144
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 110,
+   "cate": 0.06808,
+   "ic_inf": -0.08348,
+   "ic_sup": 0.21965
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 115,
+   "cate": 0.07245,
+   "ic_inf": -0.08317,
+   "ic_sup": 0.22808
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 120,
+   "cate": 0.07682,
+   "ic_inf": -0.08307,
+   "ic_sup": 0.23671
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 125,
+   "cate": 0.08119,
+   "ic_inf": -0.08315,
+   "ic_sup": 0.24554
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 130,
+   "cate": 0.08556,
+   "ic_inf": -0.08341,
+   "ic_sup": 0.25454
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.08993,
+   "ic_inf": -0.08384,
+   "ic_sup": 0.2637
+  },
+  {
+   "dx": "EPOC",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.0943,
+   "ic_inf": -0.08441,
+   "ic_sup": 0.27301
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 15,
+   "cate": 0.00353,
+   "ic_inf": -0.12581,
+   "ic_sup": 0.13286
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 20,
+   "cate": 0.0079,
+   "ic_inf": -0.11893,
+   "ic_sup": 0.13472
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 25,
+   "cate": 0.01227,
+   "ic_inf": -0.1124,
+   "ic_sup": 0.13693
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 30,
+   "cate": 0.01664,
+   "ic_inf": -0.10623,
+   "ic_sup": 0.1395
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 35,
+   "cate": 0.021,
+   "ic_inf": -0.10044,
+   "ic_sup": 0.14245
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 40,
+   "cate": 0.02537,
+   "ic_inf": -0.09505,
+   "ic_sup": 0.1458
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 45,
+   "cate": 0.02974,
+   "ic_inf": -0.09006,
+   "ic_sup": 0.14955
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 50,
+   "cate": 0.03411,
+   "ic_inf": -0.08548,
+   "ic_sup": 0.15371
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 55,
+   "cate": 0.03848,
+   "ic_inf": -0.08131,
+   "ic_sup": 0.15828
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 60,
+   "cate": 0.04285,
+   "ic_inf": -0.07756,
+   "ic_sup": 0.16326
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 65,
+   "cate": 0.04722,
+   "ic_inf": -0.07421,
+   "ic_sup": 0.16865
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 70,
+   "cate": 0.05159,
+   "ic_inf": -0.07125,
+   "ic_sup": 0.17443
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 75,
+   "cate": 0.05596,
+   "ic_inf": -0.06867,
+   "ic_sup": 0.18059
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 80,
+   "cate": 0.06033,
+   "ic_inf": -0.06646,
+   "ic_sup": 0.18712
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 85,
+   "cate": 0.0647,
+   "ic_inf": -0.0646,
+   "ic_sup": 0.19399
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 90,
+   "cate": 0.06907,
+   "ic_inf": -0.06306,
+   "ic_sup": 0.20119
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 95,
+   "cate": 0.07344,
+   "ic_inf": -0.06183,
+   "ic_sup": 0.2087
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 100,
+   "cate": 0.07781,
+   "ic_inf": -0.06088,
+   "ic_sup": 0.21649
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 105,
+   "cate": 0.08218,
+   "ic_inf": -0.0602,
+   "ic_sup": 0.22455
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 110,
+   "cate": 0.08655,
+   "ic_inf": -0.05976,
+   "ic_sup": 0.23285
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.09092,
+   "ic_inf": -0.05955,
+   "ic_sup": 0.24138
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.09528,
+   "ic_inf": -0.05955,
+   "ic_sup": 0.25012
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.09965,
+   "ic_inf": -0.05973,
+   "ic_sup": 0.25904
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.10402,
+   "ic_inf": -0.06009,
+   "ic_sup": 0.26814
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.10839,
+   "ic_inf": -0.06061,
+   "ic_sup": 0.2774
+  },
+  {
+   "dx": "EPOC",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.11276,
+   "ic_inf": -0.06128,
+   "ic_sup": 0.28681
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 15,
+   "cate": 0.02199,
+   "ic_inf": -0.10648,
+   "ic_sup": 0.15045
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 20,
+   "cate": 0.02636,
+   "ic_inf": -0.09953,
+   "ic_sup": 0.15224
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 25,
+   "cate": 0.03073,
+   "ic_inf": -0.09292,
+   "ic_sup": 0.15438
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 30,
+   "cate": 0.0351,
+   "ic_inf": -0.08669,
+   "ic_sup": 0.15688
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 35,
+   "cate": 0.03947,
+   "ic_inf": -0.08083,
+   "ic_sup": 0.15977
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 40,
+   "cate": 0.04384,
+   "ic_inf": -0.07537,
+   "ic_sup": 0.16305
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 45,
+   "cate": 0.04821,
+   "ic_inf": -0.07032,
+   "ic_sup": 0.16673
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 50,
+   "cate": 0.05258,
+   "ic_inf": -0.06569,
+   "ic_sup": 0.17084
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 55,
+   "cate": 0.05694,
+   "ic_inf": -0.06147,
+   "ic_sup": 0.17536
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 60,
+   "cate": 0.06131,
+   "ic_inf": -0.05766,
+   "ic_sup": 0.18029
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 65,
+   "cate": 0.06568,
+   "ic_inf": -0.05427,
+   "ic_sup": 0.18563
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 70,
+   "cate": 0.07005,
+   "ic_inf": -0.05127,
+   "ic_sup": 0.19138
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 75,
+   "cate": 0.07442,
+   "ic_inf": -0.04867,
+   "ic_sup": 0.19751
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 80,
+   "cate": 0.07879,
+   "ic_inf": -0.04643,
+   "ic_sup": 0.20401
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 85,
+   "cate": 0.08316,
+   "ic_inf": -0.04454,
+   "ic_sup": 0.21087
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 90,
+   "cate": 0.08753,
+   "ic_inf": -0.04299,
+   "ic_sup": 0.21805
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.0919,
+   "ic_inf": -0.04175,
+   "ic_sup": 0.22555
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.09627,
+   "ic_inf": -0.04079,
+   "ic_sup": 0.23333
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.10064,
+   "ic_inf": -0.04011,
+   "ic_sup": 0.24138
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.10501,
+   "ic_inf": -0.03967,
+   "ic_sup": 0.24968
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.10938,
+   "ic_inf": -0.03946,
+   "ic_sup": 0.25821
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.11375,
+   "ic_inf": -0.03946,
+   "ic_sup": 0.26695
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.11812,
+   "ic_inf": -0.03965,
+   "ic_sup": 0.27588
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.12249,
+   "ic_inf": -0.04002,
+   "ic_sup": 0.28499
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.12686,
+   "ic_inf": -0.04055,
+   "ic_sup": 0.29426
+  },
+  {
+   "dx": "EPOC",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.13122,
+   "ic_inf": -0.04122,
+   "ic_sup": 0.30367
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 15,
+   "cate": 0.04045,
+   "ic_inf": -0.09134,
+   "ic_sup": 0.17225
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 20,
+   "cate": 0.04482,
+   "ic_inf": -0.08441,
+   "ic_sup": 0.17405
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 25,
+   "cate": 0.04919,
+   "ic_inf": -0.07781,
+   "ic_sup": 0.17619
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 30,
+   "cate": 0.05356,
+   "ic_inf": -0.07157,
+   "ic_sup": 0.17869
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 35,
+   "cate": 0.05793,
+   "ic_inf": -0.06571,
+   "ic_sup": 0.18156
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 40,
+   "cate": 0.0623,
+   "ic_inf": -0.06022,
+   "ic_sup": 0.18482
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 45,
+   "cate": 0.06667,
+   "ic_inf": -0.05514,
+   "ic_sup": 0.18847
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 50,
+   "cate": 0.07104,
+   "ic_inf": -0.05045,
+   "ic_sup": 0.19253
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 55,
+   "cate": 0.07541,
+   "ic_inf": -0.04618,
+   "ic_sup": 0.19699
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 60,
+   "cate": 0.07978,
+   "ic_inf": -0.0423,
+   "ic_sup": 0.20186
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 65,
+   "cate": 0.08415,
+   "ic_inf": -0.03883,
+   "ic_sup": 0.20712
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.08852,
+   "ic_inf": -0.03575,
+   "ic_sup": 0.21278
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.09288,
+   "ic_inf": -0.03305,
+   "ic_sup": 0.21882
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.09725,
+   "ic_inf": -0.03071,
+   "ic_sup": 0.22522
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.10162,
+   "ic_inf": -0.02872,
+   "ic_sup": 0.23197
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.10599,
+   "ic_inf": -0.02707,
+   "ic_sup": 0.23905
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.11036,
+   "ic_inf": -0.02572,
+   "ic_sup": 0.24644
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.11473,
+   "ic_inf": -0.02465,
+   "ic_sup": 0.25412
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.1191,
+   "ic_inf": -0.02386,
+   "ic_sup": 0.26207
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.12347,
+   "ic_inf": -0.02332,
+   "ic_sup": 0.27026
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.12784,
+   "ic_inf": -0.02301,
+   "ic_sup": 0.27869
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.13221,
+   "ic_inf": -0.02291,
+   "ic_sup": 0.28733
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.13658,
+   "ic_inf": -0.02301,
+   "ic_sup": 0.29616
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.14095,
+   "ic_inf": -0.02328,
+   "ic_sup": 0.30518
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.14532,
+   "ic_inf": -0.02372,
+   "ic_sup": 0.31436
+  },
+  {
+   "dx": "EPOC",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.14969,
+   "ic_inf": -0.02431,
+   "ic_sup": 0.32369
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 15,
+   "cate": -0.10221,
+   "ic_inf": -0.23431,
+   "ic_sup": 0.0299
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 20,
+   "cate": -0.09784,
+   "ic_inf": -0.22681,
+   "ic_sup": 0.03114
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 25,
+   "cate": -0.09347,
+   "ic_inf": -0.21963,
+   "ic_sup": 0.0327
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 30,
+   "cate": -0.0891,
+   "ic_inf": -0.21278,
+   "ic_sup": 0.03459
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 35,
+   "cate": -0.08473,
+   "ic_inf": -0.20629,
+   "ic_sup": 0.03684
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 40,
+   "cate": -0.08036,
+   "ic_inf": -0.20018,
+   "ic_sup": 0.03946
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 45,
+   "cate": -0.07599,
+   "ic_inf": -0.19446,
+   "ic_sup": 0.04248
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 50,
+   "cate": -0.07162,
+   "ic_inf": -0.18914,
+   "ic_sup": 0.0459
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 55,
+   "cate": -0.06725,
+   "ic_inf": -0.18424,
+   "ic_sup": 0.04974
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 60,
+   "cate": -0.06288,
+   "ic_inf": -0.17976,
+   "ic_sup": 0.054
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 65,
+   "cate": -0.05851,
+   "ic_inf": -0.1757,
+   "ic_sup": 0.05868
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 70,
+   "cate": -0.05414,
+   "ic_inf": -0.17206,
+   "ic_sup": 0.06378
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 75,
+   "cate": -0.04977,
+   "ic_inf": -0.16883,
+   "ic_sup": 0.06929
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 80,
+   "cate": -0.0454,
+   "ic_inf": -0.166,
+   "ic_sup": 0.0752
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 85,
+   "cate": -0.04103,
+   "ic_inf": -0.16356,
+   "ic_sup": 0.08149
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 90,
+   "cate": -0.03666,
+   "ic_inf": -0.16148,
+   "ic_sup": 0.08815
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 95,
+   "cate": -0.03229,
+   "ic_inf": -0.15975,
+   "ic_sup": 0.09516
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 100,
+   "cate": -0.02793,
+   "ic_inf": -0.15835,
+   "ic_sup": 0.10249
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 105,
+   "cate": -0.02356,
+   "ic_inf": -0.15724,
+   "ic_sup": 0.11013
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 110,
+   "cate": -0.01919,
+   "ic_inf": -0.15642,
+   "ic_sup": 0.11805
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 115,
+   "cate": -0.01482,
+   "ic_inf": -0.15587,
+   "ic_sup": 0.12623
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 120,
+   "cate": -0.01045,
+   "ic_inf": -0.15555,
+   "ic_sup": 0.13465
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 125,
+   "cate": -0.00608,
+   "ic_inf": -0.15545,
+   "ic_sup": 0.1433
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 130,
+   "cate": -0.00171,
+   "ic_inf": -0.15556,
+   "ic_sup": 0.15214
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.00266,
+   "ic_inf": -0.15585,
+   "ic_sup": 0.16117
+  },
+  {
+   "dx": "Coma",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.00703,
+   "ic_inf": -0.15631,
+   "ic_sup": 0.17037
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 15,
+   "cate": -0.08374,
+   "ic_inf": -0.21123,
+   "ic_sup": 0.04374
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 20,
+   "cate": -0.07937,
+   "ic_inf": -0.20357,
+   "ic_sup": 0.04482
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 25,
+   "cate": -0.075,
+   "ic_inf": -0.19622,
+   "ic_sup": 0.04621
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 30,
+   "cate": -0.07063,
+   "ic_inf": -0.18922,
+   "ic_sup": 0.04795
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 35,
+   "cate": -0.06627,
+   "ic_inf": -0.18258,
+   "ic_sup": 0.05005
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 40,
+   "cate": -0.0619,
+   "ic_inf": -0.17633,
+   "ic_sup": 0.05253
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 45,
+   "cate": -0.05753,
+   "ic_inf": -0.17048,
+   "ic_sup": 0.05543
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 50,
+   "cate": -0.05316,
+   "ic_inf": -0.16506,
+   "ic_sup": 0.05874
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 55,
+   "cate": -0.04879,
+   "ic_inf": -0.16007,
+   "ic_sup": 0.0625
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 60,
+   "cate": -0.04442,
+   "ic_inf": -0.15553,
+   "ic_sup": 0.06669
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 65,
+   "cate": -0.04005,
+   "ic_inf": -0.15142,
+   "ic_sup": 0.07133
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 70,
+   "cate": -0.03568,
+   "ic_inf": -0.14776,
+   "ic_sup": 0.07641
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 75,
+   "cate": -0.03131,
+   "ic_inf": -0.14454,
+   "ic_sup": 0.08192
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 80,
+   "cate": -0.02694,
+   "ic_inf": -0.14173,
+   "ic_sup": 0.08785
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 85,
+   "cate": -0.02257,
+   "ic_inf": -0.13932,
+   "ic_sup": 0.09418
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 90,
+   "cate": -0.0182,
+   "ic_inf": -0.1373,
+   "ic_sup": 0.1009
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 95,
+   "cate": -0.01383,
+   "ic_inf": -0.13564,
+   "ic_sup": 0.10798
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 100,
+   "cate": -0.00946,
+   "ic_inf": -0.13432,
+   "ic_sup": 0.11539
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 105,
+   "cate": -0.00509,
+   "ic_inf": -0.13331,
+   "ic_sup": 0.12312
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 110,
+   "cate": -0.00072,
+   "ic_inf": -0.13258,
+   "ic_sup": 0.13114
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.00365,
+   "ic_inf": -0.13213,
+   "ic_sup": 0.13942
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.00801,
+   "ic_inf": -0.13192,
+   "ic_sup": 0.14795
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.01238,
+   "ic_inf": -0.13193,
+   "ic_sup": 0.1567
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.01675,
+   "ic_inf": -0.13214,
+   "ic_sup": 0.16565
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.02112,
+   "ic_inf": -0.13254,
+   "ic_sup": 0.17479
+  },
+  {
+   "dx": "Coma",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.02549,
+   "ic_inf": -0.13311,
+   "ic_sup": 0.18409
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 15,
+   "cate": -0.06528,
+   "ic_inf": -0.19235,
+   "ic_sup": 0.06179
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 20,
+   "cate": -0.06091,
+   "ic_inf": -0.18462,
+   "ic_sup": 0.0628
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 25,
+   "cate": -0.05654,
+   "ic_inf": -0.17721,
+   "ic_sup": 0.06412
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 30,
+   "cate": -0.05217,
+   "ic_inf": -0.17014,
+   "ic_sup": 0.06579
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 35,
+   "cate": -0.0478,
+   "ic_inf": -0.16343,
+   "ic_sup": 0.06782
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 40,
+   "cate": -0.04343,
+   "ic_inf": -0.15711,
+   "ic_sup": 0.07024
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 45,
+   "cate": -0.03906,
+   "ic_inf": -0.1512,
+   "ic_sup": 0.07307
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 50,
+   "cate": -0.03469,
+   "ic_inf": -0.14571,
+   "ic_sup": 0.07632
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 55,
+   "cate": -0.03033,
+   "ic_inf": -0.14065,
+   "ic_sup": 0.08
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 60,
+   "cate": -0.02596,
+   "ic_inf": -0.13605,
+   "ic_sup": 0.08414
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 65,
+   "cate": -0.02159,
+   "ic_inf": -0.13189,
+   "ic_sup": 0.08872
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 70,
+   "cate": -0.01722,
+   "ic_inf": -0.12818,
+   "ic_sup": 0.09374
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 75,
+   "cate": -0.01285,
+   "ic_inf": -0.1249,
+   "ic_sup": 0.09921
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 80,
+   "cate": -0.00848,
+   "ic_inf": -0.12205,
+   "ic_sup": 0.1051
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 85,
+   "cate": -0.00411,
+   "ic_inf": -0.11961,
+   "ic_sup": 0.11139
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 90,
+   "cate": 0.00026,
+   "ic_inf": -0.11756,
+   "ic_sup": 0.11808
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.00463,
+   "ic_inf": -0.11587,
+   "ic_sup": 0.12513
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.009,
+   "ic_inf": -0.11453,
+   "ic_sup": 0.13252
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.01337,
+   "ic_inf": -0.1135,
+   "ic_sup": 0.14024
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.01774,
+   "ic_inf": -0.11276,
+   "ic_sup": 0.14824
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.02211,
+   "ic_inf": -0.1123,
+   "ic_sup": 0.15651
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.02648,
+   "ic_inf": -0.11208,
+   "ic_sup": 0.16503
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.03085,
+   "ic_inf": -0.11209,
+   "ic_sup": 0.17378
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.03522,
+   "ic_inf": -0.1123,
+   "ic_sup": 0.18273
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.03959,
+   "ic_inf": -0.1127,
+   "ic_sup": 0.19187
+  },
+  {
+   "dx": "Coma",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.04395,
+   "ic_inf": -0.11327,
+   "ic_sup": 0.20118
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 15,
+   "cate": -0.04682,
+   "ic_inf": -0.17771,
+   "ic_sup": 0.08407
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 20,
+   "cate": -0.04245,
+   "ic_inf": -0.17003,
+   "ic_sup": 0.08513
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 25,
+   "cate": -0.03808,
+   "ic_inf": -0.16265,
+   "ic_sup": 0.0865
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 30,
+   "cate": -0.03371,
+   "ic_inf": -0.15562,
+   "ic_sup": 0.08819
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 35,
+   "cate": -0.02934,
+   "ic_inf": -0.14893,
+   "ic_sup": 0.09025
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 40,
+   "cate": -0.02497,
+   "ic_inf": -0.14262,
+   "ic_sup": 0.09268
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 45,
+   "cate": -0.0206,
+   "ic_inf": -0.1367,
+   "ic_sup": 0.0955
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 50,
+   "cate": -0.01623,
+   "ic_inf": -0.13119,
+   "ic_sup": 0.09873
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 55,
+   "cate": -0.01186,
+   "ic_inf": -0.12611,
+   "ic_sup": 0.10238
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 60,
+   "cate": -0.00749,
+   "ic_inf": -0.12145,
+   "ic_sup": 0.10647
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 65,
+   "cate": -0.00312,
+   "ic_inf": -0.11723,
+   "ic_sup": 0.11098
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.00125,
+   "ic_inf": -0.11344,
+   "ic_sup": 0.11593
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.00561,
+   "ic_inf": -0.11007,
+   "ic_sup": 0.1213
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.00998,
+   "ic_inf": -0.10712,
+   "ic_sup": 0.12709
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.01435,
+   "ic_inf": -0.10456,
+   "ic_sup": 0.13327
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.01872,
+   "ic_inf": -0.10239,
+   "ic_sup": 0.13984
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.02309,
+   "ic_inf": -0.10058,
+   "ic_sup": 0.14676
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.02746,
+   "ic_inf": -0.09911,
+   "ic_sup": 0.15403
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.03183,
+   "ic_inf": -0.09795,
+   "ic_sup": 0.16161
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.0362,
+   "ic_inf": -0.09709,
+   "ic_sup": 0.16949
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.04057,
+   "ic_inf": -0.0965,
+   "ic_sup": 0.17764
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.04494,
+   "ic_inf": -0.09615,
+   "ic_sup": 0.18603
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.04931,
+   "ic_inf": -0.09604,
+   "ic_sup": 0.19466
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.05368,
+   "ic_inf": -0.09613,
+   "ic_sup": 0.20349
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.05805,
+   "ic_inf": -0.09642,
+   "ic_sup": 0.21251
+  },
+  {
+   "dx": "Coma",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.06242,
+   "ic_inf": -0.09688,
+   "ic_sup": 0.22171
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 15,
+   "cate": -0.10334,
+   "ic_inf": -0.26608,
+   "ic_sup": 0.0594
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 20,
+   "cate": -0.09897,
+   "ic_inf": -0.25937,
+   "ic_sup": 0.06143
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 25,
+   "cate": -0.0946,
+   "ic_inf": -0.25293,
+   "ic_sup": 0.06373
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 30,
+   "cate": -0.09023,
+   "ic_inf": -0.24678,
+   "ic_sup": 0.06632
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 35,
+   "cate": -0.08586,
+   "ic_inf": -0.24093,
+   "ic_sup": 0.0692
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 40,
+   "cate": -0.08149,
+   "ic_inf": -0.23539,
+   "ic_sup": 0.0724
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 45,
+   "cate": -0.07712,
+   "ic_inf": -0.23016,
+   "ic_sup": 0.07591
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 50,
+   "cate": -0.07275,
+   "ic_inf": -0.22525,
+   "ic_sup": 0.07974
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 55,
+   "cate": -0.06839,
+   "ic_inf": -0.22066,
+   "ic_sup": 0.08389
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 60,
+   "cate": -0.06402,
+   "ic_inf": -0.2164,
+   "ic_sup": 0.08836
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 65,
+   "cate": -0.05965,
+   "ic_inf": -0.21246,
+   "ic_sup": 0.09316
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 70,
+   "cate": -0.05528,
+   "ic_inf": -0.20884,
+   "ic_sup": 0.09828
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 75,
+   "cate": -0.05091,
+   "ic_inf": -0.20553,
+   "ic_sup": 0.10372
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 80,
+   "cate": -0.04654,
+   "ic_inf": -0.20254,
+   "ic_sup": 0.10946
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 85,
+   "cate": -0.04217,
+   "ic_inf": -0.19985,
+   "ic_sup": 0.11551
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 90,
+   "cate": -0.0378,
+   "ic_inf": -0.19745,
+   "ic_sup": 0.12185
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 95,
+   "cate": -0.03343,
+   "ic_inf": -0.19533,
+   "ic_sup": 0.12847
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 100,
+   "cate": -0.02906,
+   "ic_inf": -0.19348,
+   "ic_sup": 0.13536
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 105,
+   "cate": -0.02469,
+   "ic_inf": -0.19189,
+   "ic_sup": 0.14251
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 110,
+   "cate": -0.02032,
+   "ic_inf": -0.19055,
+   "ic_sup": 0.1499
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 115,
+   "cate": -0.01595,
+   "ic_inf": -0.18943,
+   "ic_sup": 0.15753
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 120,
+   "cate": -0.01158,
+   "ic_inf": -0.18854,
+   "ic_sup": 0.16537
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 125,
+   "cate": -0.00721,
+   "ic_inf": -0.18785,
+   "ic_sup": 0.17342
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 130,
+   "cate": -0.00284,
+   "ic_inf": -0.18736,
+   "ic_sup": 0.18167
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 135,
+   "cate": 0.00153,
+   "ic_inf": -0.18704,
+   "ic_sup": 0.1901
+  },
+  {
+   "dx": "Otros",
+   "edad": 40,
+   "aps1": 140,
+   "cate": 0.00589,
+   "ic_inf": -0.1869,
+   "ic_sup": 0.19869
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 15,
+   "cate": -0.08488,
+   "ic_inf": -0.24613,
+   "ic_sup": 0.07637
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 20,
+   "cate": -0.08051,
+   "ic_inf": -0.23935,
+   "ic_sup": 0.07833
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 25,
+   "cate": -0.07614,
+   "ic_inf": -0.23285,
+   "ic_sup": 0.08057
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 30,
+   "cate": -0.07177,
+   "ic_inf": -0.22664,
+   "ic_sup": 0.0831
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 35,
+   "cate": -0.0674,
+   "ic_inf": -0.22073,
+   "ic_sup": 0.08593
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 40,
+   "cate": -0.06303,
+   "ic_inf": -0.21513,
+   "ic_sup": 0.08907
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 45,
+   "cate": -0.05866,
+   "ic_inf": -0.20985,
+   "ic_sup": 0.09252
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 50,
+   "cate": -0.05429,
+   "ic_inf": -0.20489,
+   "ic_sup": 0.0963
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 55,
+   "cate": -0.04992,
+   "ic_inf": -0.20025,
+   "ic_sup": 0.10041
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 60,
+   "cate": -0.04555,
+   "ic_inf": -0.19595,
+   "ic_sup": 0.10484
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 65,
+   "cate": -0.04118,
+   "ic_inf": -0.19197,
+   "ic_sup": 0.1096
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 70,
+   "cate": -0.03681,
+   "ic_inf": -0.18832,
+   "ic_sup": 0.11469
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 75,
+   "cate": -0.03245,
+   "ic_inf": -0.18499,
+   "ic_sup": 0.12009
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 80,
+   "cate": -0.02808,
+   "ic_inf": -0.18197,
+   "ic_sup": 0.12582
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 85,
+   "cate": -0.02371,
+   "ic_inf": -0.17926,
+   "ic_sup": 0.13184
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 90,
+   "cate": -0.01934,
+   "ic_inf": -0.17684,
+   "ic_sup": 0.13817
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 95,
+   "cate": -0.01497,
+   "ic_inf": -0.17471,
+   "ic_sup": 0.14478
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 100,
+   "cate": -0.0106,
+   "ic_inf": -0.17286,
+   "ic_sup": 0.15166
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 105,
+   "cate": -0.00623,
+   "ic_inf": -0.17126,
+   "ic_sup": 0.1588
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 110,
+   "cate": -0.00186,
+   "ic_inf": -0.16992,
+   "ic_sup": 0.1662
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 115,
+   "cate": 0.00251,
+   "ic_inf": -0.16881,
+   "ic_sup": 0.17382
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 120,
+   "cate": 0.00688,
+   "ic_inf": -0.16792,
+   "ic_sup": 0.18167
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 125,
+   "cate": 0.01125,
+   "ic_inf": -0.16724,
+   "ic_sup": 0.18973
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 130,
+   "cate": 0.01562,
+   "ic_inf": -0.16675,
+   "ic_sup": 0.19799
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 135,
+   "cate": 0.01999,
+   "ic_inf": -0.16645,
+   "ic_sup": 0.20643
+  },
+  {
+   "dx": "Otros",
+   "edad": 55,
+   "aps1": 140,
+   "cate": 0.02436,
+   "ic_inf": -0.16632,
+   "ic_sup": 0.21504
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 15,
+   "cate": -0.06642,
+   "ic_inf": -0.22954,
+   "ic_sup": 0.09671
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 20,
+   "cate": -0.06205,
+   "ic_inf": -0.22275,
+   "ic_sup": 0.09866
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 25,
+   "cate": -0.05768,
+   "ic_inf": -0.21623,
+   "ic_sup": 0.10088
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 30,
+   "cate": -0.05331,
+   "ic_inf": -0.21,
+   "ic_sup": 0.10339
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 35,
+   "cate": -0.04894,
+   "ic_inf": -0.20407,
+   "ic_sup": 0.10619
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 40,
+   "cate": -0.04457,
+   "ic_inf": -0.19844,
+   "ic_sup": 0.1093
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 45,
+   "cate": -0.0402,
+   "ic_inf": -0.19313,
+   "ic_sup": 0.11273
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 50,
+   "cate": -0.03583,
+   "ic_inf": -0.18813,
+   "ic_sup": 0.11647
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 55,
+   "cate": -0.03146,
+   "ic_inf": -0.18345,
+   "ic_sup": 0.12053
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 60,
+   "cate": -0.02709,
+   "ic_inf": -0.1791,
+   "ic_sup": 0.12492
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 65,
+   "cate": -0.02272,
+   "ic_inf": -0.17508,
+   "ic_sup": 0.12964
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 70,
+   "cate": -0.01835,
+   "ic_inf": -0.17138,
+   "ic_sup": 0.13467
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 75,
+   "cate": -0.01398,
+   "ic_inf": -0.16799,
+   "ic_sup": 0.14003
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 80,
+   "cate": -0.00961,
+   "ic_inf": -0.16492,
+   "ic_sup": 0.14569
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 85,
+   "cate": -0.00524,
+   "ic_inf": -0.16215,
+   "ic_sup": 0.15166
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 90,
+   "cate": -0.00087,
+   "ic_inf": -0.15968,
+   "ic_sup": 0.15793
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 95,
+   "cate": 0.00349,
+   "ic_inf": -0.15749,
+   "ic_sup": 0.16448
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 100,
+   "cate": 0.00786,
+   "ic_inf": -0.15557,
+   "ic_sup": 0.1713
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 105,
+   "cate": 0.01223,
+   "ic_inf": -0.15392,
+   "ic_sup": 0.17839
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 110,
+   "cate": 0.0166,
+   "ic_inf": -0.15252,
+   "ic_sup": 0.18572
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 115,
+   "cate": 0.02097,
+   "ic_inf": -0.15135,
+   "ic_sup": 0.19329
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 120,
+   "cate": 0.02534,
+   "ic_inf": -0.1504,
+   "ic_sup": 0.20108
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 125,
+   "cate": 0.02971,
+   "ic_inf": -0.14966,
+   "ic_sup": 0.20909
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 130,
+   "cate": 0.03408,
+   "ic_inf": -0.14913,
+   "ic_sup": 0.21729
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 135,
+   "cate": 0.03845,
+   "ic_inf": -0.14877,
+   "ic_sup": 0.22567
+  },
+  {
+   "dx": "Otros",
+   "edad": 70,
+   "aps1": 140,
+   "cate": 0.04282,
+   "ic_inf": -0.14859,
+   "ic_sup": 0.23423
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 15,
+   "cate": -0.04795,
+   "ic_inf": -0.21621,
+   "ic_sup": 0.1203
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 20,
+   "cate": -0.04358,
+   "ic_inf": -0.20945,
+   "ic_sup": 0.12228
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 25,
+   "cate": -0.03922,
+   "ic_inf": -0.20296,
+   "ic_sup": 0.12453
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 30,
+   "cate": -0.03485,
+   "ic_inf": -0.19675,
+   "ic_sup": 0.12706
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 35,
+   "cate": -0.03048,
+   "ic_inf": -0.19083,
+   "ic_sup": 0.12987
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 40,
+   "cate": -0.02611,
+   "ic_inf": -0.1852,
+   "ic_sup": 0.13298
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 45,
+   "cate": -0.02174,
+   "ic_inf": -0.17987,
+   "ic_sup": 0.1364
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 50,
+   "cate": -0.01737,
+   "ic_inf": -0.17485,
+   "ic_sup": 0.14012
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 55,
+   "cate": -0.013,
+   "ic_inf": -0.17015,
+   "ic_sup": 0.14415
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 60,
+   "cate": -0.00863,
+   "ic_inf": -0.16576,
+   "ic_sup": 0.1485
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 65,
+   "cate": -0.00426,
+   "ic_inf": -0.16168,
+   "ic_sup": 0.15316
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 70,
+   "cate": 0.00011,
+   "ic_inf": -0.15791,
+   "ic_sup": 0.15813
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 75,
+   "cate": 0.00448,
+   "ic_inf": -0.15445,
+   "ic_sup": 0.16341
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 80,
+   "cate": 0.00885,
+   "ic_inf": -0.1513,
+   "ic_sup": 0.169
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 85,
+   "cate": 0.01322,
+   "ic_inf": -0.14844,
+   "ic_sup": 0.17488
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 90,
+   "cate": 0.01759,
+   "ic_inf": -0.14588,
+   "ic_sup": 0.18105
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 95,
+   "cate": 0.02196,
+   "ic_inf": -0.14359,
+   "ic_sup": 0.1875
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 100,
+   "cate": 0.02633,
+   "ic_inf": -0.14157,
+   "ic_sup": 0.19422
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 105,
+   "cate": 0.0307,
+   "ic_inf": -0.1398,
+   "ic_sup": 0.20119
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 110,
+   "cate": 0.03507,
+   "ic_inf": -0.13829,
+   "ic_sup": 0.20842
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 115,
+   "cate": 0.03943,
+   "ic_inf": -0.137,
+   "ic_sup": 0.21587
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 120,
+   "cate": 0.0438,
+   "ic_inf": -0.13594,
+   "ic_sup": 0.22355
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 125,
+   "cate": 0.04817,
+   "ic_inf": -0.13509,
+   "ic_sup": 0.23144
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 130,
+   "cate": 0.05254,
+   "ic_inf": -0.13444,
+   "ic_sup": 0.23952
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 135,
+   "cate": 0.05691,
+   "ic_inf": -0.13397,
+   "ic_sup": 0.24779
+  },
+  {
+   "dx": "Otros",
+   "edad": 85,
+   "aps1": 140,
+   "cate": 0.06128,
+   "ic_inf": -0.13368,
+   "ic_sup": 0.25624
+  }
+ ]
+}

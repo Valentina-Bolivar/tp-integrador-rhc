@@ -47,7 +47,10 @@ def split(df: pd.DataFrame, test_size: float = TEST_SIZE, seed: int = SEED):
 
 
 def build_preprocessor(
-    scale: bool = False, drop_first: bool = True, binary: list[str] | None = None
+    scale: bool = False,
+    drop_first: bool = True,
+    binary: list[str] | None = None,
+    include_treatment: bool = True,
 ) -> ColumnTransformer:
     """Imputación por mediana, indicadores de faltante, escalado opcional y dummies.
 
@@ -57,6 +60,8 @@ def build_preprocessor(
 
     ``drop_first=True`` elimina una categoría de referencia por variable para evitar la
     trampa de las variables ficticias en el MCO (colinealidad perfecta con la constante).
+    ``include_treatment=False`` construye solo las covariables (el conjunto de ajuste Z de
+    la Fase 4), sin el tratamiento.
     """
     other_num = [c for c in NUMERIC_FEATURES if c not in INDICATOR_VARS]
     with_ind = [("imputar", SimpleImputer(strategy="median", add_indicator=True))]
@@ -70,11 +75,12 @@ def build_preprocessor(
         handle_unknown="ignore" if not drop_first else "error",
         sparse_output=False,
     )
+    binary_cols = (binary or MODEL_BINARY) + ([TREATMENT] if include_treatment else [])
     pre = ColumnTransformer(
         [
             ("num", Pipeline(without_ind), other_num),
             ("num_ind", Pipeline(with_ind), INDICATOR_VARS),
-            ("bin", "passthrough", (binary or MODEL_BINARY) + [TREATMENT]),
+            ("bin", "passthrough", binary_cols),
             ("cat", categorical, MODEL_CATEGORICAL),
         ],
         verbose_feature_names_out=False,

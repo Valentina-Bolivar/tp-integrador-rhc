@@ -36,7 +36,7 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 | 1 | Auditoría forense, EDA, contrastes de hipótesis, ANOVA | Completa |
 | 2 | MCO, diagnóstico de Gauss-Markov, Cook, VIF, PCA sin fuga | Completa |
 | 3 | Torneo de ML y calibración | Completa |
-| 4 | DAG, DoWhy, EconML, refutaciones, ensayo crítico | Pendiente |
+| 4 | DAG, DoWhy, EconML, refutaciones, ensayo crítico | Completa |
 | 5 | Web app desplegada | Pendiente |
 
 ## Estructura del repositorio
@@ -57,7 +57,7 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 
 ## Reproducción
 
-**En Google Colab:** abrir el notebook con el enlace "Abrir en Colab" y elegir la opción *Ejecutar todas* del menú *Entorno de ejecución*. La primera celda descarga el repositorio dentro de Colab (el notebook necesita el código de `src/rhc` y el dataset de `data/raw`) e instala las versiones fijadas en `requirements.txt`. Si Colab solicita reiniciar la sesión después de la instalación, se reinicia y se vuelven a ejecutar todas las celdas.
+**En Google Colab:** abrir el notebook con el enlace "Abrir en Colab" y elegir la opción *Ejecutar todas* del menú *Entorno de ejecución*. La primera celda descarga el repositorio dentro de Colab (el notebook necesita el código de `src/rhc` y el dataset de `data/raw`) e instala las versiones fijadas en `requirements.txt`. En la primera ejecución, si Colab ya tenía cargadas otras versiones de las librerías, la celda reinicia la sesión automáticamente; en ese caso se vuelve a elegir *Ejecutar todas* y la segunda ejecución corre completa. Para revisar un pull request antes de integrarlo, se abre el notebook desde la rama del pull request y se reemplaza `BRANCH = "main"` por el nombre de esa rama.
 
 **En una computadora local (Python 3.12):**
 
