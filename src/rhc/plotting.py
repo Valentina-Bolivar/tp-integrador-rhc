@@ -16,6 +16,14 @@ GRID = "#e4e3df"
 SURFACE = "#fcfcfb"
 GROUP_COLORS = {0: NO_RHC, 1: RHC, "Sin RHC": NO_RHC, "Con RHC": RHC}
 
+# Paleta de los cuatro modelos de la Fase 3 (validada para daltonismo; sin violeta).
+MODEL_COLORS = {
+    "Logística": "#2f6db3",
+    "Naive Bayes": "#1f9e74",
+    "Árbol podado": "#b27a14",
+    "Random Forest": "#b5487a",
+}
+
 # Divergente: dos polos + punto medio gris neutro (para correlaciones).
 DIVERGING = LinearSegmentedColormap.from_list("rhc_div", [NO_RHC, "#f1f0ec", RHC])
 # Secuencial de un solo tono (celeste → azul profundo).

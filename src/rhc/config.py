@@ -161,6 +161,17 @@ PREFIX_LABELS = {
 }
 
 
+# Traducción de los niveles de las variables categóricas.
+LEVEL_LABELS = {
+    "Male": "masculino", "Female": "femenino", "Yes": "localizado", "Metastatic": "metastásico",
+    "white": "blanca", "black": "negra", "other": "otra",
+    "Under $11k": "< USD 11.000", "$11-$25k": "USD 11.000 a 25.000",
+    "$25-$50k": "USD 25.000 a 50.000", "> $50k": "> USD 50.000",
+    "Medicare & Medicaid": "Medicare y Medicaid", "Private & Medicare": "privada y Medicare",
+    "No insurance": "sin cobertura", "Private": "privada",
+}
+
+
 def pretty(name: str) -> str:
     """Etiqueta legible en español para una variable o una columna dummy."""
     if name in LABELS:
@@ -168,5 +179,5 @@ def pretty(name: str) -> str:
     for prefix, label in PREFIX_LABELS.items():
         if name.startswith(prefix):
             rest = name[len(prefix):]
-            return label + LABELS.get(rest, rest).split(" (")[0]
+            return label + LEVEL_LABELS.get(rest, LABELS.get(rest, rest).split(" (")[0])
     return name

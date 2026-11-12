@@ -35,7 +35,7 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 | 0 | Estructura, contrato de datos, Quality Gate | Completa |
 | 1 | Auditoría forense, EDA, contrastes de hipótesis, ANOVA | Completa |
 | 2 | MCO, diagnóstico de Gauss-Markov, Cook, VIF, PCA sin fuga | Completa |
-| 3 | Torneo de ML y calibración | Pendiente |
+| 3 | Torneo de ML y calibración | Completa |
 | 4 | DAG, DoWhy, EconML, refutaciones, ensayo crítico | Pendiente |
 | 5 | Web app desplegada | Pendiente |
 
