@@ -125,7 +125,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Fase 4. Inferencia causal
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
@@ -189,7 +189,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ## Entrada 4. Formalización del debate causal
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 ### Pregunta causal
 
