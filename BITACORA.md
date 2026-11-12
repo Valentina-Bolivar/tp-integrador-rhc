@@ -107,7 +107,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Fase 3. Torneo predictivo y calibración
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
@@ -126,7 +126,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ## Entrada 3. Autopsia de experimentos fallidos
 
-**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 12/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 12/11/2026
 
 ### Experimento 1. Árbol de decisión sin restricciones (Fase 3)
 
