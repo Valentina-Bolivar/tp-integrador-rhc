@@ -12,6 +12,8 @@ from rhc.config import (
     COMORBIDITIES,
     DATA_RAW,
     DATA_URL,
+    DX_MAP,
+    DX_ORDER,
     ID_COLS,
 )
 
@@ -49,6 +51,11 @@ def build_frame(raw: pd.DataFrame) -> pd.DataFrame:
     df["los"] = df["dschdte"] - df["sadmdte"]
     df["log_los"] = np.log(df["los"])
 
+    # Diagnóstico primario agrupado: las categorías con menos de 2 % de los casos
+    # (cirrosis, cáncer de pulmón y de colon) se unen en "Otros".
+    df["dx"] = pd.Categorical(df["cat1"].map(DX_MAP), categories=DX_ORDER)
+    df["has_cat2"] = df["cat2"].notna().astype(int)
+
     income_order = ["Under $11k", "$11-$25k", "$25-$50k", "> $50k"]
     df["income"] = pd.Categorical(df["income"], categories=income_order, ordered=True)
     df["ca"] = pd.Categorical(df["ca"], categories=["No", "Yes", "Metastatic"], ordered=True)
@@ -58,5 +65,5 @@ def build_frame(raw: pd.DataFrame) -> pd.DataFrame:
 
 
 def load_frame() -> pd.DataFrame:
-    """Atajo: dataset crudo → marco analítico tipado."""
+    """Atajo: del dataset crudo al marco analítico tipado."""
     return build_frame(load_raw())

@@ -55,6 +55,42 @@ ID_COLS = ["Unnamed: 0", "ptid"]
 NUMERIC_FEATURES = DEMOGRAPHICS_NUM + SCORES + PHYSIOLOGY
 BINARY_FEATURES = COMORBIDITIES + ADMISSION_DX
 
+# Diagnóstico primario agrupado (Fase 1, sección 1.6).
+DX_MAP = {
+    "ARF": "Insuf. respiratoria aguda",
+    "MOSF w/Sepsis": "Falla multiorgánica + sepsis",
+    "MOSF w/Malignancy": "Falla multiorgánica + cáncer",
+    "CHF": "Insuf. cardíaca",
+    "COPD": "EPOC",
+    "Coma": "Coma",
+    "Cirrhosis": "Otros",
+    "Lung Cancer": "Otros",
+    "Colon Cancer": "Otros",
+}
+DX_ORDER = [
+    "Insuf. respiratoria aguda", "Falla multiorgánica + sepsis", "Falla multiorgánica + cáncer",
+    "Insuf. cardíaca", "EPOC", "Coma", "Otros",
+]
+
+# Conjunto de modelado: variables categóricas que entran como dummies (Fases 2 a 4).
+# El primer nivel de cada lista es la categoría de referencia (la más frecuente o la basal).
+CATEGORY_LEVELS = {
+    "dx": DX_ORDER,
+    "ca": ["No", "Yes", "Metastatic"],
+    "sex": ["Female", "Male"],
+    "race": ["white", "black", "other"],
+    "income": ["Under $11k", "$11-$25k", "$25-$50k", "> $50k"],
+    "ninsclas": [
+        "Private", "Medicare", "Private & Medicare", "Medicaid",
+        "Medicare & Medicaid", "No insurance",
+    ],
+}
+MODEL_CATEGORICAL = list(CATEGORY_LEVELS)
+# Variables imputadas que conservan un indicador de faltante (Fase 1, sección 1.2).
+INDICATOR_VARS = ["wtkilo1", "hrt1", "resp1", "meanbp1"]
+# `malighx` se excluye: coincide con `ca` en el 99,3 % de los pacientes (Fase 2, VIF de 26).
+MODEL_BINARY = [c for c in BINARY_FEATURES if c != "malighx"] + ["dnr1", "has_cat2"]
+
 # Etiquetas en español para gráficos y tablas.
 LABELS = {
     "rhc": "Cateterismo cardíaco derecho (RHC)",
@@ -89,4 +125,48 @@ LABELS = {
     "income": "Ingreso anual",
     "ninsclas": "Cobertura médica",
     "dnr1": "Orden de no reanimar (día 1)",
+    "cardiohx": "Antecedente cardiovascular",
+    "chfhx": "Insuficiencia cardíaca crónica",
+    "dementhx": "Demencia",
+    "psychhx": "Antecedente psiquiátrico",
+    "chrpulhx": "Enfermedad pulmonar crónica",
+    "renalhx": "Enfermedad renal crónica",
+    "liverhx": "Cirrosis o enfermedad hepática",
+    "gibledhx": "Hemorragia digestiva alta",
+    "malighx": "Antecedente de malignidad",
+    "immunhx": "Inmunosupresión",
+    "transhx": "Transferido de otro hospital",
+    "amihx": "Infarto agudo de miocardio",
+    "resp": "Admisión respiratoria",
+    "card": "Admisión cardiovascular",
+    "neuro": "Admisión neurológica",
+    "gastr": "Admisión gastrointestinal",
+    "renal": "Admisión renal",
+    "meta": "Admisión metabólica",
+    "hema": "Admisión hematológica",
+    "seps": "Admisión por sepsis",
+    "trauma": "Admisión por trauma",
+    "ortho": "Admisión ortopédica",
+    "has_cat2": "Diagnóstico secundario",
 }
+
+PREFIX_LABELS = {
+    "dx_": "Dx: ",
+    "ca_": "Cáncer: ",
+    "sex_": "Sexo: ",
+    "race_": "Raza: ",
+    "income_": "Ingreso: ",
+    "ninsclas_": "Cobertura: ",
+    "missingindicator_": "Faltante: ",
+}
+
+
+def pretty(name: str) -> str:
+    """Etiqueta legible en español para una variable o una columna dummy."""
+    if name in LABELS:
+        return LABELS[name]
+    for prefix, label in PREFIX_LABELS.items():
+        if name.startswith(prefix):
+            rest = name[len(prefix):]
+            return label + LABELS.get(rest, rest).split(" (")[0]
+    return name
