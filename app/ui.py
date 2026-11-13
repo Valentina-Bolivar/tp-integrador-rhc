@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import math
+from decimal import ROUND_HALF_UP, Decimal
+
 import altair as alt
 import streamlit as st
 
@@ -172,8 +175,15 @@ def altair_theme() -> alt.theme.ThemeConfig:
 
 
 def num(x: float, decimals: int = 1) -> str:
-    """Número con coma decimal y punto de miles, como se escribe en español."""
-    s = f"{x:,.{decimals}f}"
+    """Número con coma decimal y punto de miles, como se escribe en español.
+
+    Redondea hacia arriba en el empate a partir de la representación decimal del número, para
+    que un valor guardado como 0,1765 se muestre como 0,177, igual que en el notebook.
+    """
+    if not math.isfinite(x):
+        return "sin dato"
+    q = Decimal(1).scaleb(-decimals)
+    s = f"{Decimal(repr(float(x))).quantize(q, rounding=ROUND_HALF_UP):,.{decimals}f}"
     return s.replace(",", "_").replace(".", ",").replace("_", ".")
 
 

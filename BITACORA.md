@@ -140,6 +140,23 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 | 49 | Reportar la heterogeneidad por gravedad como indicio y no como hallazgo | El intervalo del coeficiente del APACHE en el CATE incluye el cero | El único efecto de subgrupo con intervalo que excluye el cero es la sepsis (+9 puntos porcentuales). |
 | 50 | Demostrar las preguntas trampa con una simulación de efecto conocido | El mediador del DAG no se observa en el dataset | La simulación replica la estructura del DAG: el ajuste por Z recupera el efecto verdadero, el ajuste por M deja solo el efecto directo y el ajuste por C sesga la estimación. |
 
+### Paso 5. Web app
+
+**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación de interfaz:** Felicitas Paz (pendiente) · **Validación QA:** Emilia Bedners (pendiente)
+
+| # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
+|---|---|---|---|
+| 51 | La app lee el modelo, el DAG y los resultados causales desde `models/` y no reestima nada costoso | Reestimar en cada visita haría la app lenta y podría producir cifras distintas de las del notebook | La app y el notebook muestran los mismos resultados. Si el notebook se vuelve a ejecutar, la app se actualiza sola. |
+| 52 | Recalcular en la app, con el mismo código del notebook, toda cifra citada en sus textos que no esté guardada en `models/` (recorte de propensiones, colisionador, simulación del mediador, conteos de la muestra) | El QA detectó dos cifras escritas a mano en los textos de la app | Ninguna cifra queda escrita a mano. Un test compara el ajuste recalculado en la app con el ATE guardado por el notebook. |
+| 53 | Calcular el intervalo de la probabilidad predicha por bootstrap del propio modelo L2 (300 réplicas, preprocesamiento fijo) | La logística penalizada no tiene un intervalo analítico; el método delta sobre una logística sin penalizar describe la incertidumbre de otro estimador | El punto y el intervalo provienen del mismo modelo que se eligió en la Fase 3. |
+| 54 | Explicar cada predicción con el aporte $\beta_j z_j$ de cada variable frente a un paciente promedio, sumando las dummies de una misma variable | El enunciado pide la importancia de las variables para el caso individual | Con variables estandarizadas el aporte es exacto: el intercepto más la suma de los aportes reproduce el logit predicho, y un test lo verifica. |
+| 55 | Dejar el umbral de clasificación ajustable, con el umbral de Youden (0,32) como valor inicial, y mostrar la sensibilidad y la especificidad resultantes en test | El costo de una falsa alarma y el de una muerte no detectada dependen de la unidad que use la app | El usuario ve en el momento qué gana y qué pierde al mover el umbral. |
+| 56 | Mostrar, junto a cada predicción, cuánto cambia la probabilidad predicha al modificar el RHC y el efecto causal estimado para ese perfil | Es el error que el ensayo de la Fase 4 advierte: leer una asociación predictiva como efecto de una intervención | La pantalla pone las dos cantidades lado a lado y aclara que solo la segunda responde a la decisión de cateterizar. |
+| 57 | Etiquetar el CATE de un perfil como "aumento significativo" solo si su intervalo excluye el cero, con una advertencia de comparaciones múltiples | Al recorrer muchos perfiles, algunos intervalos excluyen el cero por azar | La heterogeneidad firme se limita a la sepsis, como en la Fase 4; el resto se presenta como exploratorio. |
+| 58 | Alojar la tipografía en el repositorio y aumentar el contraste de los textos secundarios | La revisión de interfaz encontró textos demasiado claros | La app se ve igual en cualquier equipo y los textos secundarios cumplen un contraste adecuado sobre el fondo. |
+| 59 | Desplegar en Streamlit Community Cloud desde la cuenta de la administradora del repositorio, con Python 3.12 | Streamlit solo permite desplegar a quien administra el repositorio, y en un repositorio personal ese permiso no puede delegarse | Cada merge en `main` redespliega la app. Python 3.12 es la versión del Quality Gate y del entorno local. |
+
+
 ---
 
 ## Entrada 3. Autopsia de experimentos fallidos
@@ -201,7 +218,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 |---|---|---|
 | $Z_1 \rightarrow T$ | La cobertura médica y el ingreso pueden condicionar el acceso a un procedimiento invasivo y costoso. | Desbalance de cobertura e ingreso entre tratados y controles antes de ponderar. |
 | $Z_1 \rightarrow Y$ | La edad y el nivel socioeconómico se asocian con la sobrevida en terapia intensiva. | Edad entre las variables importantes por permutación (Fase 3). |
-| $Z_2 \rightarrow T$ | El diagnóstico define la indicación clínica del catéter. | RHC en el 57 % de los pacientes con sepsis frente al 13 % en coma (Fase 1). |
+| $Z_2 \rightarrow T$ | El diagnóstico define la indicación clínica del catéter. | RHC en el 57 % de los pacientes con sepsis frente al 13 % en EPOC (Fase 1). |
 | $Z_2 \rightarrow Y$ | El diagnóstico y las comorbilidades determinan el pronóstico. | Mortalidad a 30 días entre 13 % y más de 50 % según el diagnóstico (Fase 1). |
 | $Z_3 \rightarrow T$ | Los pacientes inestables (hipotensos, con mala oxigenación) son los candidatos habituales a monitoreo invasivo. | APACHE 9,8 puntos mayor en los tratados (Fase 1, $d = 0{,}51$). |
 | $Z_3 \rightarrow Y$ | La gravedad fisiológica es el principal determinante de la mortalidad. | El APACHE y la probabilidad de sobrevida encabezan todos los rankings de importancia (Fase 3). |
@@ -230,3 +247,43 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 ### Conclusión del debate
 
 Bajo los supuestos explicitados, los datos no muestran beneficio del RHC y sí un aumento de la mortalidad a 30 días de entre 4 y 6 puntos porcentuales, robusto a tres estimadores, tres refutaciones y dos especificaciones alternativas del conjunto de ajuste. La principal fragilidad es la posible confusión por el criterio clínico no registrado, cuya magnitud necesaria para anular el efecto es moderada.
+
+---
+
+## Entrada 5. Trazabilidad y uso ético de asistentes de IA
+
+**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Project Lead & Scrum Master) · **Validación QA:** Emilia Bedners (pendiente)
+
+### Herramienta y alcance
+
+El equipo utilizó Claude (Anthropic) como asistente de programación y de redacción. Asistió en la escritura del código de `src/rhc`, del notebook, de los tests y de la web app, y en la redacción de los textos, bajo la supervisión de la Backend & ML / Causal Engineer, que revisó cada resultado y decidió qué se incorporaba. La QA & Validation Engineer también utilizó Claude como apoyo en las revisiones de los pull requests, la reproducción del notebook y la redacción de sus comentarios; sus veredictos se basaron en las salidas ejecutadas y en el Quality Gate. A partir de la Fase 2, todos los cambios llegaron a `main` mediante pull requests que pasaron el Quality Gate y la revisión del QA Engineer.
+
+### Prompts de diseño
+
+1. Selección del dataset: buscar un candidato por cada dominio sugerido, analizar el enunciado en detalle y comparar los candidatos según los requisitos de la Fase 4 (tratamiento binario, confusión documentada, N ≥ 1.500).
+2. Planificación: dividir el trabajo en pasos ordenados, en forma de lista de control, para poder supervisar cada uno.
+3. Ejecución por fases: implementar cada fase como un pull request revisable, con el código reutilizable en `src/rhc` y tests para cada función.
+4. Web app: construir los tres módulos del enunciado, completos y con la identidad visual del equipo.
+
+A partir de los errores detectados, el equipo fijó dos criterios de control para todo lo producido con asistencia de la IA: toda cifra de un texto debe provenir de una salida ejecutada, y ninguna decisión puede tomarse con el conjunto de test.
+
+### Errores de la IA detectados y pruebas que los refutan
+
+| Error | Cómo se detectó | Prueba o corrección |
+|---|---|---|
+| Afirmó que el trabajo se entregaba como informe LaTeX y notebook de Colab | La Project Lead lo contrastó con el enunciado | El plan se rehízo sobre el texto del enunciado |
+| Redactó cifras antes de ejecutar el código (curtosis de la albúmina, ATE de Double ML, E-values) | Contraste de cada cifra del texto con las salidas del notebook | Cifras corregidas; `test_resultados_causales_guardados` y `test_verificaciones_causales_coinciden_con_el_notebook` cruzan los resultados guardados con los recalculados |
+| Interpretó que los pacientes con cero en presión o frecuencia cardíaca morían menos | Lectura de la Figura 1.2: mueren más y tienen un APACHE de 78 a 87 | El cero se recodifica con un indicador de faltante; `test_centinelas_eliminados` y `test_reglas_no_tocan_ceros_legitimos` |
+| Escribió un test estocástico que fallaba el 5 % de las veces por azar | El test falló en el Quality Gate | Reemplazado por `test_dos_proporciones_cobertura_del_ic`, que verifica la cobertura sobre 1.000 réplicas |
+| Diseñó un test de Naive Bayes que ignoraba el efecto del suavizado de Laplace con clases desbalanceadas | El test falló | `test_naive_bayes_mixto_cuenta_el_prior_una_sola_vez`, con clases balanceadas |
+| Presentó como hallazgo que el daño crece con el APACHE, con una pendiente cuyo intervalo incluye el cero | Revisión de la tabla de coeficientes de LinearDML | Reformulado como indicio en el notebook, la Bitácora y la app |
+| La primera celda del notebook ejecutaba una copia vieja del repositorio en Colab | Reproducción del QA en Colab | La celda actualiza la rama indicada y reinicia la sesión si cambian las versiones |
+| Escribió que el conjunto de test se usaba una sola vez, y citó el test al justificar la elección del modelo | Revisión del QA | Reformulado: ninguna decisión se toma con test; `test_imputacion_usa_medianas_de_train` y `test_pca_se_ajusta_solo_con_train` (escrito por el QA) verifican que el preprocesamiento no use test |
+| Dejó cifras escritas a mano en los textos de la app | Revisión del QA | Las cifras se leen de `models/` o se recalculan; `test_verificaciones_causales_coinciden_con_el_notebook` |
+| Atribuyó a los pacientes en coma la menor tasa de RHC (13 %), que corresponde a EPOC | Contraste de la Entrada 4 con la tabla de la Fase 1 | Corregido en la Entrada 4 |
+
+### Uso ético
+
+- Los datos son públicos y no identifican a los pacientes. El repositorio no contiene información personal.
+- Las decisiones metodológicas y las conclusiones son del equipo: la IA propuso código y redacción, y el equipo verificó cada resultado contra las salidas y los tests.
+- La web app no es un dispositivo clínico. Sus pantallas aclaran que la predicción no es una recomendación de tratamiento y que la estimación causal depende de supuestos no verificables con los datos.

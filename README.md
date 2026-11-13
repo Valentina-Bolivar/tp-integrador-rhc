@@ -56,6 +56,69 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 └── requirements-dev.txt  Herramientas de calidad
 ```
 
+## Cómo está construido
+
+### Flujo del análisis
+
+La auditoría de datos alimenta a las cuatro fases. Las Fases 2 y 3 trabajan sobre una única partición 80/20, de modo que ningún parámetro se estima con el conjunto de test. Las Fases 1 y 4 usan la muestra completa, porque no evalúan predicciones fuera de muestra. El modelo final y los resultados causales se guardan en `models/`, de donde los lee la web app.
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#EAF1F6", "primaryBorderColor": "#2F6E9B", "primaryTextColor": "#1E2A33", "lineColor": "#5A6772", "secondaryColor": "#F5F8FA", "tertiaryColor": "#FFFFFF", "clusterBkg": "#F5F8FA", "clusterBorder": "#DCE4EA", "fontFamily": "Georgia, serif"}}}%%
+flowchart LR
+    A["Dataset RHC<br/>5.735 pacientes"] --> B["Auditoría forense<br/>896 centinelas recodificados"]
+    B --> F1["Fase 1<br/>Contrastes y ANOVA"]
+    B --> P["Partición 80/20<br/>estratificada, semilla 42"]
+    P --> F2["Fase 2<br/>MCO, Gauss-Markov y PCA"]
+    P --> F3["Fase 3<br/>Torneo predictivo y calibración"]
+    B --> F4["Fase 4<br/>DAG, DoWhy y EconML"]
+    F3 --> M[("models/<br/>modelo y resultados")]
+    F4 --> M
+    M --> W["Web app<br/>Streamlit Community Cloud"]
+```
+
+### Supuestos causales
+
+El grafo dirigido acíclico de la Fase 4 declara qué causa qué. Los confusores observados $Z$ influyen en la decisión de cateterizar y en la mortalidad; ajustar por ellos bloquea los caminos de puerta trasera. La intensificación terapéutica $M$ es un mediador y los días de internación $C$ son un colisionador: ninguno de los dos entra en el conjunto de ajuste. El criterio médico y el hospital $U$ no se observan, y su posible efecto se acota con el E-value.
+
+![DAG del análisis causal](reports/figures/fig_4_1_dag.png)
+
+### Arquitectura del código
+
+Todo el código reutilizable vive en `src/rhc`. El notebook, la web app y los tests importan las mismas funciones, de modo que una corrección en un módulo se propaga a los tres y queda cubierta por el Quality Gate.
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#EAF1F6", "primaryBorderColor": "#2F6E9B", "primaryTextColor": "#1E2A33", "lineColor": "#5A6772", "secondaryColor": "#F5F8FA", "tertiaryColor": "#FFFFFF", "clusterBkg": "#F5F8FA", "clusterBorder": "#DCE4EA", "fontFamily": "Georgia, serif"}}}%%
+flowchart TB
+    subgraph SRC["src/rhc: código compartido"]
+        direction LR
+        CFG["config<br/>variables y semilla"] --- DAT["data y cleaning<br/>carga y auditoría"]
+        DAT --- FEA["features<br/>partición y preprocesamiento"]
+        FEA --- MET["inference, regression,<br/>models y causal"]
+        MET --- SRV["serving<br/>capa de la app"]
+    end
+    NB["notebooks/<br/>TP_Integrador_Final.ipynb"] --> SRC
+    APP["app/<br/>app.py y ui.py"] --> SRC
+    TST["tests/<br/>47 tests"] --> SRC
+    NB --> MOD[("models/")]
+    MOD --> APP
+```
+
+### Flujo de trabajo del equipo
+
+Ningún cambio llega a `main` sin pasar el Quality Gate y la revisión del QA Engineer. Cada merge en `main` redespliega la app automáticamente.
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#EAF1F6", "primaryBorderColor": "#2F6E9B", "primaryTextColor": "#1E2A33", "lineColor": "#5A6772", "secondaryColor": "#F5F8FA", "tertiaryColor": "#FFFFFF", "clusterBkg": "#F5F8FA", "clusterBorder": "#DCE4EA", "fontFamily": "Georgia, serif"}}}%%
+flowchart LR
+    R["Rama de trabajo<br/>Backend o Frontend"] --> PR["Pull request"]
+    PR --> QG{"Quality Gate<br/>ruff + pytest"}
+    QG -- falla --> R
+    QG -- pasa --> QA{"Revisión QA<br/>reproducción en Colab"}
+    QA -- observaciones --> R
+    QA -- "[APROBADO]" --> MG["Merge a main<br/>Project Lead"]
+    MG --> DEP["Redespliegue automático<br/>de la app"]
+```
+
 ## Web app
 
 La aplicación lee los artefactos que el notebook guarda en `models/` y no reestima los modelos. Tiene cuatro secciones:
