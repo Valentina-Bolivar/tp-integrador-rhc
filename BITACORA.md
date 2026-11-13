@@ -142,7 +142,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Paso 5. Web app
 
-**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación de interfaz:** Felicitas Paz (pendiente) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación de interfaz:** Felicitas Paz (pendiente) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 13/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
@@ -252,7 +252,7 @@ Bajo los supuestos explicitados, los datos no muestran beneficio del RHC y sí u
 
 ## Entrada 5. Trazabilidad y uso ético de asistentes de IA
 
-**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Project Lead & Scrum Master) · **Validación QA:** Emilia Bedners (pendiente)
+**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Project Lead & Scrum Master) · **Validación QA:** Emilia Bedners (QA & Validation Engineer) · 13/11/2026
 
 ### Herramienta y alcance
 
