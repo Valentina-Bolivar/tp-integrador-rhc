@@ -256,7 +256,7 @@ Bajo los supuestos explicitados, los datos no muestran beneficio del RHC y sí u
 
 ### Herramienta y alcance
 
-El equipo utilizó Claude (Anthropic) como asistente de programación y de redacción. Asistió en la escritura del código de `src/rhc`, del notebook, de los tests y de la web app, y en la redacción de los textos, bajo la supervisión de la Backend & ML / Causal Engineer, que revisó cada resultado y decidió qué se incorporaba. A partir de la Fase 2, todos los cambios llegaron a `main` mediante pull requests que pasaron el Quality Gate y la revisión del QA Engineer.
+El equipo utilizó Claude (Anthropic) como asistente de programación y de redacción. Asistió en la escritura del código de `src/rhc`, del notebook, de los tests y de la web app, y en la redacción de los textos, bajo la supervisión de la Backend & ML / Causal Engineer, que revisó cada resultado y decidió qué se incorporaba. La QA & Validation Engineer también utilizó Claude como apoyo en las revisiones de los pull requests, la reproducción del notebook y la redacción de sus comentarios; sus veredictos se basaron en las salidas ejecutadas y en el Quality Gate. A partir de la Fase 2, todos los cambios llegaron a `main` mediante pull requests que pasaron el Quality Gate y la revisión del QA Engineer.
 
 ### Prompts de diseño
 
