@@ -13,10 +13,19 @@ from dataclasses import dataclass
 import joblib
 import numpy as np
 import pandas as pd
+import statsmodels.api as sm
 from sklearn.base import clone
 
 from rhc import config as cfg
-from rhc.causal import causal_frame, propensity_scores, safe_name, standardized_differences
+from rhc.causal import (
+    COLLIDER,
+    causal_frame,
+    hajek_ipw,
+    propensity_scores,
+    safe_name,
+    simulate_trap_questions,
+    standardized_differences,
+)
 from rhc.cleaning import apply_sentinels
 from rhc.data import load_frame
 from rhc.features import build_pca, build_preprocessor, split
@@ -40,6 +49,7 @@ class Artifacts:
     test_proba: np.ndarray
     balance: pd.DataFrame
     propensity: pd.DataFrame
+    checks: dict
 
 
 def load_artifacts() -> Artifacts:
@@ -54,6 +64,7 @@ def load_artifacts() -> Artifacts:
     boot = bootstrap_coefficients(model, train)
     test_proba = model.predict_proba(test[model_columns()])[:, 1]
     balance, propensity = covariate_balance(data)
+    checks = causal_checks(data)
     return Artifacts(
         data,
         train,
@@ -68,6 +79,7 @@ def load_artifacts() -> Artifacts:
         test_proba,
         balance,
         propensity,
+        checks,
     )
 
 
@@ -264,6 +276,38 @@ def cate_at(causal: dict, dx: str, age: float, aps1: float) -> dict:
     return out
 
 
+def causal_checks(df: pd.DataFrame) -> dict:
+    """Verificaciones de la Fase 4 que la app cita en sus textos, recalculadas con el mismo código.
+
+    - Colisionador: coeficiente del RHC en el MCO de Y sobre T + Z, con y sin los días de
+      internación (sección 4.2 del notebook).
+    - Recorte: IPW de Hájek sin los pacientes con propensión fuera de [0,05; 0,95] (sección 4.3).
+    - Simulación de efecto conocido: efecto total verdadero y estimación al ajustar por el
+      mediador (sección 4.2).
+    """
+    frame, z_cols = causal_frame(df)
+    t = frame[cfg.TREATMENT].to_numpy()
+    y = frame[cfg.OUTCOME_BIN].to_numpy()
+
+    def ols_effect(cols: list[str]) -> float:
+        X = sm.add_constant(frame[[cfg.TREATMENT] + cols])
+        return float(sm.OLS(frame[cfg.OUTCOME_BIN], X).fit().params[cfg.TREATMENT])
+
+    ps = propensity_scores(frame[z_cols], t)
+    trim = (0.05, 0.95)
+    trimmed = hajek_ipw(y, t, ps, trim=trim)
+    sim = simulate_trap_questions()
+    return {
+        "ajuste_z": ols_effect(z_cols),
+        "ajuste_z_colisionador": ols_effect(z_cols + [COLLIDER]),
+        "recorte_limites": trim,
+        "recorte_proporcion": float(((ps < trim[0]) | (ps > trim[1])).mean()),
+        "recorte_ate": float(trimmed["ATE"]),
+        "sim_total": float(sim["efecto total verdadero"].iloc[0]),
+        "sim_mediador": float(sim.loc["Z + mediador M", "efecto estimado de T"]),
+    }
+
+
 DAG_VIEWS = {
     "Estructura completa": {
         "edges": [],
@@ -302,7 +346,7 @@ DAG_VIEWS = {
             "Los días de internación son un colisionador: el RHC los prolonga y la muerte "
             "temprana los acorta. Si se ajusta por ellos, se abre el camino T → C ← Y y aparece "
             "una asociación espuria (sesgo de Berkson). En los datos, la estimación pasa de "
-            "5,4 a 6,9 puntos porcentuales."
+            "{ajuste_z} a {ajuste_z_colisionador} puntos porcentuales."
         ),
     },
     "Ajustar por el mediador": {
@@ -311,11 +355,25 @@ DAG_VIEWS = {
         "text": (
             "Ajustar por la intensificación terapéutica bloquea el camino indirecto: el modelo "
             "estimaría solo el efecto directo y subestimaría el impacto total de la política. "
-            "En la simulación del notebook, con un efecto total verdadero de 0,07, el ajuste "
-            "por el mediador recupera solo 0,04."
+            "En la simulación del notebook, con un efecto total verdadero de {sim_total}, el "
+            "ajuste por el mediador recupera solo {sim_mediador}."
         ),
     },
 }
+
+
+def dag_text(view: str, checks: dict) -> str:
+    """Explicación de una vista del DAG con las cifras recalculadas por causal_checks."""
+
+    def comma(x: float, d: int) -> str:
+        return f"{x:.{d}f}".replace(".", ",")
+
+    return DAG_VIEWS[view]["text"].format(
+        ajuste_z=comma(100 * checks["ajuste_z"], 1),
+        ajuste_z_colisionador=comma(100 * checks["ajuste_z_colisionador"], 1),
+        sim_total=comma(checks["sim_total"], 2),
+        sim_mediador=comma(checks["sim_mediador"], 2),
+    )
 
 
 def dag_dot(dag: dict, view: str, palette: dict) -> str:
