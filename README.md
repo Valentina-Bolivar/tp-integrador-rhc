@@ -4,7 +4,7 @@
 ![Quality Gate](https://github.com/Valentina-Bolivar/tp-integrador-rhc/actions/workflows/quality-gate.yml/badge.svg)
 ![Licencia de datos](https://img.shields.io/badge/datos-Vanderbilt%20Biostatistics-8fb3c9)
 
-**Trabajo Práctico Integrador. Estadística Aplicada y Modelos de Regresión (EAyMR 2026), UCA.**
+**Trabajo Práctico Integrador. Estadística Avanzada y Modelos de Regresión (EAyMR 2026), UCA.**
 
 Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las primeras 24 horas de internación modifica la mortalidad a 30 días de pacientes críticos. Distingue dos preguntas:
 
@@ -13,7 +13,7 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 | ¿Qué paciente tiene mayor riesgo de morir? | P(Y \| X) | Fase 3: torneo predictivo |
 | ¿Qué pasaría si se le aplica RHC? | P(Y \| do(T = 1)) | Fase 4: inferencia causal |
 
-**App en producción:** pendiente de despliegue en Streamlit Community Cloud.
+**App en producción:** [tp-integrador-rhc.streamlit.app](https://tp-integrador-rhc.streamlit.app/)
 **Notebook:** [`notebooks/TP_Integrador_Final.ipynb`](notebooks/TP_Integrador_Final.ipynb) · [Abrir en Colab](https://colab.research.google.com/github/Valentina-Bolivar/tp-integrador-rhc/blob/main/notebooks/TP_Integrador_Final.ipynb)
 **Bitácora:** [`BITACORA.md`](BITACORA.md)
 
@@ -37,7 +37,7 @@ Este proyecto evalúa si el cateterismo cardíaco derecho (RHC) aplicado en las 
 | 2 | MCO, diagnóstico de Gauss-Markov, Cook, VIF, PCA sin fuga | Completa |
 | 3 | Torneo de ML y calibración | Completa |
 | 4 | DAG, DoWhy, EconML, refutaciones, ensayo crítico | Completa |
-| 5 | Web app (diagnóstico, predicción y simulación causal) | Construida, pendiente de despliegue |
+| 5 | Web app (diagnóstico, predicción y simulación causal) | Completa y desplegada |
 
 ## Estructura del repositorio
 

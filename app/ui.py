@@ -13,8 +13,8 @@ PALETTE = {
     "wash": "#EAF1F6",
     "fill": "#D6E6F2",
     "ink": "#1E2A33",
-    "muted": "#5D6B76",
-    "faint": "#8A97A1",
+    "muted": "#3D4A55",
+    "faint": "#5A6772",
     "rule": "#DCE4EA",
     "accent": "#2F6E9B",
     "highlight": "#e0703c",
@@ -57,7 +57,7 @@ p, li {{ line-height: 1.6; }}
 
 .section-intro {{ color: var(--muted); font-size: 1.05rem; max-width: 50rem;
   margin: -0.3rem 0 1rem 0; }}
-.caption {{ color: var(--muted); font-size: 0.92rem; line-height: 1.5; }}
+.caption {{ color: var(--muted); font-size: 0.97rem; line-height: 1.55; }}
 
 .riskcard {{ background: {PALETTE["surface"]}; border: 1px solid var(--rule); border-radius: 0.9rem;
   padding: 1.4rem 1.6rem 1.2rem 1.6rem; margin-bottom: 1.2rem; }}
@@ -79,7 +79,7 @@ p, li {{ line-height: 1.6; }}
   border-left: 1.5px dashed var(--muted); }}
 .riskbar .thr span {{ position: absolute; top: -1.35rem; left: 0; transform: translateX(-50%);
   white-space: nowrap; font-size: 0.82rem; color: var(--muted); }}
-.riskbar .tick {{ position: absolute; top: 1rem; font-size: 0.8rem; color: var(--faint);
+.riskbar .tick {{ position: absolute; top: 1rem; font-size: 0.86rem; color: var(--faint);
   transform: translateX(-50%); white-space: nowrap; }}
 .riskbar .tick.first {{ transform: none; }}
 .riskbar .tick.last {{ transform: translateX(-100%); }}
@@ -108,7 +108,7 @@ div[data-testid="stMetricValue"] {{ font-weight: 450; }}
 button[data-baseweb="tab"] p {{ font-size: 1.12rem; }}
 div[data-baseweb="tab-list"] {{ gap: 1.6rem; border-bottom: 1px solid var(--rule); }}
 
-.foot {{ color: var(--faint); font-size: 0.9rem; border-top: 1px solid var(--rule);
+.foot {{ color: var(--muted); font-size: 0.95rem; border-top: 1px solid var(--rule);
   margin-top: 3rem; padding-top: 1rem; }}
 @media (max-width: 640px) {{
   .masthead h1 {{ font-size: 2.1rem; }}
@@ -178,7 +178,7 @@ def num(x: float, decimals: int = 1) -> str:
 
 
 def pct(x: float, decimals: int = 1) -> str:
-    return f"{num(100 * x, decimals)} %"
+    return f"{num(100 * x, decimals)}\u00a0%"
 
 
 def pp(x: float, decimals: int = 1, sign: bool = True) -> str:
@@ -186,7 +186,7 @@ def pp(x: float, decimals: int = 1, sign: bool = True) -> str:
     value = num(100 * x, decimals)
     if sign and x > 0:
         value = "+" + value
-    return f"{value} pp"
+    return f"{value}\u00a0pp"
 
 
 def section(title: str, intro: str | None = None) -> None:

@@ -205,8 +205,15 @@ def estimators_chart(compact: bool = False) -> alt.Chart:
     )
     base = alt.Chart(df).encode(y=y)
     x_scale = alt.Scale(domain=[-1, 13])
+    x_title = "Cambio en la mortalidad (pp)"
+    if not compact:
+        x_title = "Cambio en la mortalidad a 30 días (pp)"
     rule = base.mark_rule(strokeWidth=2.5, strokeCap="round").encode(
-        x=alt.X("lo:Q", scale=x_scale, axis=axis("Cambio en la mortalidad a 30 días (pp)")),
+        x=alt.X(
+            "lo:Q",
+            scale=x_scale,
+            axis=axis(x_title),
+        ),
         x2="hi:Q",
         color=color,
         tooltip=[
@@ -337,7 +344,7 @@ per_1000 = round(1000 * LR["valor"])
 st.markdown(
     """
 <div class="masthead">
-<p class="kicker">Trabajo Práctico Integrador de Estadística Aplicada y Modelos de Regresión,
+<p class="kicker">Trabajo Práctico Integrador de Estadística Avanzada y Modelos de Regresión,
 Universidad Católica Argentina, 2026</p>
 <h1>Cateterismo cardíaco derecho en terapia intensiva</h1>
 </div>
@@ -1599,7 +1606,7 @@ introducing the E-value. *Annals of Internal Medicine, 167*(4), 268–274.
         )
 
 st.markdown(
-    f"""<p class="foot">Cátedra de Estadística Aplicada y Modelos de Regresión, prof. Ivan Gonzalo
+    f"""<p class="foot">Cátedra de Estadística Avanzada y Modelos de Regresión, prof. Ivan Gonzalo
 Vilaboa. Los resultados provienen del notebook del repositorio; la aplicación no reestima los
 modelos. Datos: Vanderbilt Biostatistics. <a href="{REPO}">Código fuente</a>.</p>""",
     unsafe_allow_html=True,
