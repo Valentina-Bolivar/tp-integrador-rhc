@@ -142,7 +142,7 @@ RHC fue el único candidato que cumplió los cinco criterios. Properati se desca
 
 ### Paso 5. Web app
 
-**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación de interfaz:** Felicitas Paz (pendiente) · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 13/11/2026
+**Fecha:** 13/11/2026 · **Firma:** Valentina Bolívar (Backend & ML / Causal Engineer) · **Validación de interfaz:** Felicitas Paz (Frontend & UI/UX Engineer) . 13/11/2026 · **Validación QA:**    Emilia Bedners (QA & Validation Engineer) · 13/11/2026
 
 | # | Decisión | Diagnóstico que la motivó | Remediación y justificación |
 |---|---|---|---|
