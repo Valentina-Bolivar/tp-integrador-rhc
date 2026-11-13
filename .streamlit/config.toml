@@ -19,6 +19,7 @@ showWidgetBorder = true
 font = "Newsreader, Georgia, serif"
 headingFont = "Newsreader, Georgia, serif"
 baseFontSize = 16
+baseFontWeight = 450
 baseRadius = "0.55rem"
 buttonRadius = "2rem"
 headingFontWeights = [500, 500, 500, 600, 600, 600]
@@ -29,9 +30,9 @@ blueColor = "#2F6E9B"
 greenColor = "#2E8A63"
 orangeColor = "#B7862A"
 redColor = "#B8483F"
-grayColor = "#8A97A1"
+grayColor = "#5A6772"
 grayBackgroundColor = "#E6EEF4"
-grayTextColor = "#4E5D69"
+grayTextColor = "#3D4A55"
 
 [[theme.fontFaces]]
 family = "Newsreader"
